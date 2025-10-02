@@ -1,291 +1,491 @@
-<!DOCTYPE html>
-<html lang="en">
+<!doctype html>
+<html lang="en" id="top">
 <head>
-  <meta charset="UTF-8" />
+  <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Portfolio • White Lotus Landscaping</title>
-  <meta name="description" content="Before & after landscaping projects by White Lotus Landscaping — paving, water features, makeovers, hedges, steps, and more." />
-<!-- Favicons & App Icons (unified across site) -->
-<link rel="icon" type="image/png" sizes="32x32" href="images/favicon-32.png">
-<link rel="icon" href="images/favicon.ico">
-<link rel="apple-touch-icon" sizes="180x180" href="images/apple-touch-icon.png">
-<meta name="theme-color" content="#0a0a0a">
+  <title>Project Portfolio — White Lotus Landscaping</title>
+  <meta name="description" content="Hand-picked landscape transformations by White Lotus Landscaping — paving, water features, gardens, steps and more." />
 
-  <link rel="icon" href="images/logo.jpg" />
+  <!-- Open Graph -->
+  <meta property="og:title" content="Project Portfolio — White Lotus Landscaping" />
+  <meta property="og:description" content="Paving, water features, gardens, steps and more — before/after case studies by White Lotus Landscaping." />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://zanemcdermott.github.io/white-lotus/portfolio.html" />
+  <meta property="og:image" content="images/hero-zen.jpg" />
+
+  <!-- Favicon / Icons (already generated in your repo) -->
+  <link rel="icon" href="images/favicon-32.png" sizes="32x32" />
+  <link rel="apple-touch-icon" href="images/favicon-180.png" />
+  <link rel="icon" href="images/favicon.ico" sizes="any" />
+
+  <!-- Global styles -->
+  <link rel="stylesheet" href="style.css?v=2" />
+  <style>
+    /* ---------- Portfolio page scoped styles ---------- */
+    .portfolio-page {
+      --ink: #ffffff;
+      --muted: rgba(255,255,255,.72);
+      --panel: #151217;
+      --panel-2: #0f0d11;
+      --brand-a: #9b4dca;
+      --brand-b: #d75ca4;
+    }
+
+    .portfolio-hero {
+      color: var(--ink);
+      background:
+        radial-gradient(120% 140% at 10% 0%, rgba(215,92,164,.28) 0%, rgba(215,92,164,0) 55%),
+        radial-gradient(120% 120% at 90% 10%, rgba(155,77,202,.24) 0%, rgba(155,77,202,0) 60%),
+        linear-gradient(180deg, #161319 0%, #0f0d11 100%);
+      padding: 72px 0 40px;
+    }
+    .portfolio-hero .container { max-width: 1100px; }
+    .portfolio-hero h1 {
+      font-size: clamp(32px, 5vw, 52px);
+      line-height: 1.05;
+      margin: 0 0 12px;
+      letter-spacing: -0.02em;
+    }
+    .portfolio-hero p {
+      margin: 0;
+      color: var(--muted);
+      font-size: clamp(16px, 2.2vw, 18px);
+    }
+
+    /* Filter bar */
+    .filter-bar {
+      position: sticky; top: 0; z-index: 5;
+      backdrop-filter: blur(6px);
+      background: linear-gradient(180deg, rgba(15,13,17,.92), rgba(15,13,17,.88));
+      border-bottom: 1px solid rgba(255,255,255,.06);
+    }
+    .filter-inner { max-width: 1100px; margin: 0 auto; padding: 16px 20px; display: flex; gap: 8px; flex-wrap: wrap; }
+    .chip {
+      border: 1px solid rgba(255,255,255,.16);
+      color: var(--ink);
+      background: #141116;
+      border-radius: 999px;
+      padding: 8px 14px;
+      font-weight: 600;
+      font-size: 14px;
+      cursor: pointer;
+      transition: border-color .2s ease, background .2s ease, transform .06s ease;
+      user-select: none;
+    }
+    .chip:hover { transform: translateY(-1px); }
+    .chip.is-active {
+      border-color: transparent;
+      background: linear-gradient(135deg, var(--brand-a), var(--brand-b));
+    }
+
+    /* Grid */
+    .portfolio-content { background: var(--panel-2); padding: 36px 0 80px; }
+    .grid { max-width: 1100px; margin: 0 auto; padding: 0 20px;
+      display: grid; grid-template-columns: repeat(12, 1fr); gap: 22px; }
+    .card {
+      grid-column: span 12;
+      background: var(--panel);
+      border: 1px solid rgba(255,255,255,.06);
+      border-radius: 18px;
+      overflow: hidden;
+      box-shadow: 0 10px 26px rgba(0,0,0,.35);
+    }
+    @media (min-width: 820px) {
+      .card { grid-column: span 6; }
+    }
+    .card-header { padding: 18px 18px 0; display: flex; align-items: baseline; justify-content: space-between; gap: 12px; }
+    .card-title { font-weight: 800; font-size: 18px; margin: 0; color: var(--ink); letter-spacing: -.01em; }
+    .card-tag {
+      font-size: 12px; font-weight: 700; letter-spacing: .06em; text-transform: uppercase;
+      padding: 6px 10px; border-radius: 999px;
+      background: rgba(215,92,164,.18); color: #ffd8f0; white-space: nowrap;
+    }
+    .card-body { padding: 14px 18px 18px; color: var(--muted); }
+    .thumb {
+      display: block; position: relative;
+      aspect-ratio: 16/9; background: #0b090d; overflow: hidden;
+    }
+    .thumb img { width: 100%; height: 100%; object-fit: cover; display: block; }
+
+    /* Before/After slider */
+    .ba {
+      position: relative; aspect-ratio: 16/9; overflow: hidden; background: #0b090d;
+      border-bottom: 1px solid rgba(255,255,255,.06);
+    }
+    .ba img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
+    .ba img.after { clip-path: inset(0 0 0 50%); transition: clip-path .05s linear; }
+    .ba input[type="range"] {
+      -webkit-appearance: none; appearance: none;
+      position: absolute; inset: 0; width: 100%; height: 100%; background: none; margin: 0;
+    }
+    .ba input[type="range"]::-webkit-slider-thumb {
+      -webkit-appearance: none; appearance: none; width: 3px; height: 100%;
+      background: linear-gradient(180deg, var(--brand-a), var(--brand-b));
+      box-shadow: 0 0 0 9999px rgba(0,0,0,0); border: 0;
+    }
+    .ba .labels {
+      position: absolute; inset: 12px 12px auto; display: flex; gap: 10px;
+    }
+    .pill {
+      backdrop-filter: blur(6px);
+      background: rgba(0,0,0,.42); color: #fff; border: 1px solid rgba(255,255,255,.18);
+      padding: 6px 10px; border-radius: 999px; font-size: 12px; font-weight: 700;
+    }
+
+    /* Collage for multi-image jobs (e.g., maintenance) */
+    .collage { display: grid; grid-template-columns: repeat(4, 1fr); gap: 8px; }
+    .collage a { aspect-ratio: 4/3; overflow: hidden; border-radius: 12px; border: 1px solid rgba(255,255,255,.06); background: #0b090d; }
+    .collage img { width: 100%; height: 100%; object-fit: cover; display: block; }
+
+    /* Details gallery (build steps) */
+    details.gallery { margin-top: 8px; border-top: 1px dashed rgba(255,255,255,.1); padding-top: 12px; }
+    details.gallery > summary { cursor: pointer; color: #fff; font-weight: 700; }
+    .thumb-row { display: grid; grid-template-columns: repeat(4,1fr); gap: 10px; margin-top: 12px; }
+    .thumb-row a { aspect-ratio: 4/3; overflow: hidden; border-radius: 10px; border: 1px solid rgba(255,255,255,.06); background:#0b090d; }
+    .thumb-row img { width: 100%; height: 100%; object-fit: cover; }
+
+    /* Lightbox */
+    .lb { position: fixed; inset: 0; background: rgba(0,0,0,.9); display: none; align-items: center; justify-content: center; z-index: 40; }
+    .lb img { max-width: 92vw; max-height: 86vh; border-radius: 12px; box-shadow: 0 20px 50px rgba(0,0,0,.6); }
+    .lb.is-open { display: flex; }
+    .lb .close { position: fixed; top: 16px; right: 16px; background: rgba(0,0,0,.6); color: #fff; border: 1px solid rgba(255,255,255,.2);
+      padding: 8px 12px; border-radius: 999px; cursor: pointer; font-weight: 700; }
+  </style>
 </head>
-<body>
-  <!-- ===== Header / Nav ===== -->
+
+<body class="portfolio-page">
+  <!-- Site header (same structure as other pages) -->
   <header class="site-header">
     <div class="container header-inner">
-      <a href="index.html" class="brand">
-        <img src="images/logo-transparent.png" alt="White Lotus Landscaping logo" width="40" height="40" />
-        <span>White Lotus Landscaping</span>
+      <a class="brand" href="index.html" aria-label="White Lotus Landscaping">
+        <img src="images/logo-transparent.png" alt="White Lotus Landscaping logo" height="40"
+             onerror="this.onerror=null;this.src='images/logo.jpg';" />
+        <span class="brand-text">White Lotus Landscaping</span>
       </a>
-      <nav class="nav">
-        <button class="nav-toggle" aria-label="Toggle menu" aria-expanded="false">
-          <span class="bar"></span><span class="bar"></span><span class="bar"></span>
-        </button>
-        <ul>
-          <li><a href="index.html#home">Home</a></li>
-          <li><a href="index.html#services">Services</a></li>
-          <li><a href="portfolio.html" class="active">Portfolio</a></li>
-          <li><a href="index.html#about">About</a></li>
-          <li><a class="btn" href="index.html#contact">Get a Quote</a></li>
-        </ul>
+      <button class="nav-toggle" aria-label="Open menu" aria-expanded="false"></button>
+      <nav class="site-nav" id="nav">
+        <a href="index.html">Home</a>
+        <a href="services.html">Services</a>
+        <a class="is-active" href="portfolio.html">Portfolio</a>
+        <a href="about.html">About</a>
+        <a class="btn btn--small" href="contact.html">Get a Quote</a>
       </nav>
     </div>
   </header>
 
-  <!-- ===== Hero ===== -->
-  <section class="hero hero-slim" style="--hero:url('images/hero-zen.jpg')">
+  <!-- Hero -->
+  <section class="portfolio-hero">
     <div class="container">
-      <h1 class="xl">Project Portfolio</h1>
-      <p>Hand-picked transformations across paving, water features, gardens, and more.</p>
-      <div class="pill-row">
-        <a href="#paving" class="pill">Paving &amp; Retaining</a>
-        <a href="#water" class="pill">Ponds &amp; Waterfalls</a>
-        <a href="#makeovers" class="pill">Garden Makeovers</a>
-        <a href="#hedges" class="pill">Hedges &amp; Screening</a>
-        <a href="#access" class="pill">Steps &amp; Access</a>
-        <a href="#maintenance" class="pill">Maintenance</a>
-      </div>
+      <h1>Project Portfolio</h1>
+      <p>Hand-picked transformations across paving, water features, gardens, steps & access, and more.</p>
     </div>
   </section>
 
-  <!-- ===== Paving & Retaining ===== -->
-  <section id="paving" class="section">
-    <div class="container">
-      <h2>Paving &amp; Retaining</h2>
-
-      <h3 class="project-title">Pavers Job 1 — Front Path Renewal</h3>
-      <div class="gallery grid">
-        <figure class="tile">
-          <img src="images/paving1-before.jpg" alt="Paving Job 1 — before: original surface" />
-          <figcaption>Before</figcaption>
-        </figure>
-        <figure class="tile">
-          <img src="images/paving1-after.jpg" alt="Paving Job 1 — after: refreshed paving pattern" />
-          <figcaption>After</figcaption>
-        </figure>
-      </div>
-
-      <h3 class="project-title">Pavers Job 2 — Rear Patio</h3>
-      <div class="gallery grid">
-        <figure class="tile">
-          <img src="images/paving2-before.jpg" alt="Paving Job 2 — before: uneven base" />
-          <figcaption>Before</figcaption>
-        </figure>
-        <figure class="tile">
-          <img src="images/paving2-after.jpg" alt="Paving Job 2 — after: neat paver finish" />
-          <figcaption>After</figcaption>
-        </figure>
-      </div>
+  <!-- Filters -->
+  <div class="filter-bar">
+    <div class="filter-inner">
+      <button class="chip is-active" data-filter="all">All</button>
+      <button class="chip" data-filter="paving">Paving &amp; Retaining</button>
+      <button class="chip" data-filter="water">Ponds &amp; Waterfalls</button>
+      <button class="chip" data-filter="makeover">Garden Makeovers</button>
+      <button class="chip" data-filter="hedges">Hedges &amp; Screening</button>
+      <button class="chip" data-filter="steps">Steps &amp; Access</button>
+      <button class="chip" data-filter="maint">Maintenance</button>
     </div>
-  </section>
-
-  <!-- ===== Water Features ===== -->
-  <section id="water" class="section alt">
-    <div class="container">
-      <h2>Ponds &amp; Waterfalls</h2>
-
-      <h3 class="project-title">Concrete Pond — Backyard Focal Point</h3>
-      <div class="gallery grid">
-        <figure class="tile">
-          <img src="images/concretepond-before.jpg" alt="Concrete pond — before with hole dug" />
-          <figcaption>Before (hole dug)</figcaption>
-        </figure>
-        <figure class="tile">
-          <img src="images/concretepond-wip1.jpg" alt="Concrete pond — during: concrete formed" />
-          <figcaption>During</figcaption>
-        </figure>
-        <figure class="tile">
-          <img src="images/concretepond-wip2.jpg" alt="Concrete pond — during: shaping and sealing" />
-          <figcaption>During</figcaption>
-        </figure>
-        <figure class="tile">
-          <img src="images/concretepond-after.jpg" alt="Concrete pond — after: filled and landscaped" />
-          <figcaption>After</figcaption>
-        </figure>
-      </div>
-
-      <h3 class="project-title">Pondless Infinite Waterfall</h3>
-      <div class="gallery grid">
-        <figure class="tile">
-          <img src="images/pondless-before.jpg" alt="Pondless waterfall — before area" />
-          <figcaption>Before</figcaption>
-        </figure>
-        <figure class="tile">
-          <img src="images/pondless-wip.jpg" alt="Pondless waterfall — during construction" />
-          <figcaption>During</figcaption>
-        </figure>
-        <figure class="tile">
-          <img src="images/pondless-after.jpg" alt="Pondless waterfall — after with natural stone" />
-          <figcaption>After</figcaption>
-        </figure>
-      </div>
-    </div>
-  </section>
-
-  <!-- ===== Garden Makeovers ===== -->
-  <section id="makeovers" class="section">
-    <div class="container">
-      <h2>Garden Makeovers</h2>
-
-      <h3 class="project-title">Backyard Refresh — Painted Fence &amp; Pine Surround</h3>
-      <div class="gallery grid">
-        <figure class="tile">
-          <img src="images/backyard-pine-before.jpg" alt="Backyard pine surround — before" />
-          <figcaption>Before</figcaption>
-        </figure>
-        <figure class="tile">
-          <img src="images/backyard-pine-during.jpg" alt="Backyard pine surround — during installation" />
-          <figcaption>During</figcaption>
-        </figure>
-        <figure class="tile">
-          <img src="images/backyard-pine-after.jpg" alt="Backyard pine surround — after with painted fence" />
-          <figcaption>After</figcaption>
-        </figure>
-      </div>
-
-      <h3 class="project-title">Property Makeover — Front &amp; Side</h3>
-      <div class="gallery grid">
-        <figure class="tile">
-          <img src="images/makeover-before.jpg" alt="Makeover — before" />
-          <figcaption>Before</figcaption>
-        </figure>
-        <figure class="tile">
-          <img src="images/makeover-during1.jpg" alt="Makeover — during landscape works" />
-          <figcaption>During</figcaption>
-        </figure>
-        <figure class="tile">
-          <img src="images/makeover-during2.jpg" alt="Makeover — during, materials and layout" />
-          <figcaption>During</figcaption>
-        </figure>
-        <figure class="tile">
-          <img src="images/makeover-after.jpg" alt="Makeover — after with crisp edges and planting" />
-          <figcaption>After</figcaption>
-        </figure>
-      </div>
-
-      <h3 class="project-title">Zen Garden — Tranquil Feature</h3>
-      <div class="gallery grid">
-        <figure class="tile">
-          <img src="images/zen-before.jpg" alt="Zen garden — before" />
-          <figcaption>Before</figcaption>
-        </figure>
-        <figure class="tile">
-          <img src="images/zen-after.jpg" alt="Zen garden — after with gravel, stepping stones and accents" />
-          <figcaption>After</figcaption>
-        </figure>
-      </div>
-
-      <h3 class="project-title">Bee Garden — Pollinator-Friendly Build</h3>
-      <div class="gallery grid">
-        <figure class="tile">
-          <img src="images/bee-before.jpg" alt="Bee garden — before area" />
-          <figcaption>Before</figcaption>
-        </figure>
-        <figure class="tile"><img src="images/bee-during1.jpg" alt="Bee garden — during 1" /><figcaption>During</figcaption></figure>
-        <figure class="tile"><img src="images/bee-during2.jpg" alt="Bee garden — during 2" /><figcaption>During</figcaption></figure>
-        <figure class="tile"><img src="images/bee-during3.jpg" alt="Bee garden — during 3" /><figcaption>During</figcaption></figure>
-        <figure class="tile"><img src="images/bee-during4.jpg" alt="Bee garden — during 4" /><figcaption>During</figcaption></figure>
-        <figure class="tile"><img src="images/bee-during5.jpg" alt="Bee garden — during 5" /><figcaption>During</figcaption></figure>
-        <figure class="tile"><img src="images/bee-after1.jpg" alt="Bee garden — after 1 with planting" /><figcaption>After</figcaption></figure>
-        <figure class="tile"><img src="images/bee-after2.jpg" alt="Bee garden — after 2 with edging and mulch" /><figcaption>After</figcaption></figure>
-      </div>
-    </div>
-  </section>
-
-  <!-- ===== Hedges & Screening ===== -->
-  <section id="hedges" class="section alt">
-    <div class="container">
-      <h2>Hedges &amp; Natural Screening</h2>
-      <h3 class="project-title">Front Yard Privacy Hedge</h3>
-      <div class="gallery grid">
-        <figure class="tile"><img src="images/hedge-before.jpg" alt="Hedge — before" /><figcaption>Before</figcaption></figure>
-        <figure class="tile"><img src="images/hedge-after1.jpg" alt="Hedge — after view 1" /><figcaption>After</figcaption></figure>
-        <figure class="tile"><img src="images/hedge-after2.jpg" alt="Hedge — after view 2" /><figcaption>After</figcaption></figure>
-        <figure class="tile"><img src="images/hedge-after3.jpg" alt="Hedge — after view 3" /><figcaption>After</figcaption></figure>
-      </div>
-    </div>
-  </section>
-
-  <!-- ===== Steps & Access ===== -->
-  <section id="access" class="section">
-    <div class="container">
-      <h2>Steps &amp; Access</h2>
-
-      <h3 class="project-title">Side of House — Sleeper Steps &amp; Clean Under-Deck</h3>
-      <div class="gallery grid">
-        <figure class="tile"><img src="images/sidestep-before.jpg" alt="Side steps — before" /><figcaption>Before</figcaption></figure>
-        <figure class="tile"><img src="images/sidestep-during1.jpg" alt="Side steps — during 1" /><figcaption>During</figcaption></figure>
-        <figure class="tile"><img src="images/sidestep-during2.jpg" alt="Side steps — during 2" /><figcaption>During</figcaption></figure>
-        <figure class="tile"><img src="images/sidestep-after1.jpg" alt="Side steps — after 1" /><figcaption>After</figcaption></figure>
-        <figure class="tile"><img src="images/sidestep-after2.jpg" alt="Side steps — after 2" /><figcaption>After</figcaption></figure>
-        <figure class="tile"><img src="images/sidestep-after3.jpg" alt="Side steps — after 3" /><figcaption>After</figcaption></figure>
-      </div>
-
-      <h3 class="project-title">Driveway Adjoining Steps</h3>
-      <div class="gallery grid">
-        <figure class="tile"><img src="images/steps-before.jpg" alt="Driveway steps — before" /><figcaption>Before</figcaption></figure>
-        <figure class="tile"><img src="images/steps-during.jpg" alt="Driveway steps — during installation" /><figcaption>During</figcaption></figure>
-        <figure class="tile"><img src="images/steps-after.jpg" alt="Driveway steps — after completed" /><figcaption>After</figcaption></figure>
-      </div>
-    </div>
-  </section>
-
-  <!-- ===== Maintenance ===== -->
-  <section id="maintenance" class="section alt">
-    <div class="container">
-      <h2>Maintenance</h2>
-
-      <h3 class="project-title">Solar Panel Cleaning — Examples</h3>
-      <div class="gallery grid">
-        <figure class="tile"><img src="images/solar1.jpg" alt="Solar panel cleaning example 1" /><figcaption>Example</figcaption></figure>
-        <figure class="tile"><img src="images/solar2.jpg" alt="Solar panel cleaning example 2" /><figcaption>Example</figcaption></figure>
-        <figure class="tile"><img src="images/solar3.jpg" alt="Solar panel cleaning example 3" /><figcaption>Example</figcaption></figure>
-        <figure class="tile"><img src="images/solar4.jpg" alt="Solar panel cleaning example 4" /><figcaption>Example</figcaption></figure>
-      </div>
-    </div>
-  </section>
-
-  <!-- ===== CTA ===== -->
-  <section class="section cta">
-    <div class="container center">
-      <h2>Ready to start your project?</h2>
-      <p>Share your ideas and photos and we’ll get back with a tailored quote.</p>
-      <a href="index.html#contact" class="btn">Request a Quote</a>
-    </div>
-  </section>
-
-  <!-- ===== Footer ===== -->
-  <footer class="site-footer">
-    <div class="container footer-inner">
-      <div class="footer-brand">
-        <img src="images/logo-transparent.png" alt="White Lotus Landscaping logo" width="44" height="44" />
-        <p>&copy; <span data-year></span> White Lotus Landscaping. All rights reserved.</p>
-      </div>
-      <div class="footer-links">
-        <a href="https://www.facebook.com/share/172BXBtpYT/?mibextid=wwXIfr" target="_blank" rel="noopener">Facebook</a>
-        <a href="https://instagram.com/whitelotuslandscaping" target="_blank" rel="noopener">Instagram</a>
-        <a href="index.html#contact">Contact</a>
-      </div>
-      <div class="footer-credit">
-<footer class="site-footer">
-  <div class="container">
-    <p>&copy; 2025 White Lotus Landscaping. All rights reserved.</p>
-    <p>
-      Website designed by 
-      <a href="https://zanemcdermott.github.io/hello-static/" target="_blank" rel="noopener noreferrer">
-        Sidekick Sites
-      </a>
-    </p>
   </div>
-</footer>      </div>
+
+  <!-- Grid -->
+  <main class="portfolio-content">
+    <div class="grid">
+
+      <!-- Paving 1 -->
+      <article class="card" data-cat="paving">
+        <div class="ba" aria-label="Before / After: Pavers Job 1">
+          <img src="images/paving1-before.jpg" alt="Front path area before paving" class="before" loading="lazy" />
+          <img src="images/paving1-after.jpg" alt="Front path renewed with fresh pavers" class="after" loading="lazy" />
+          <input type="range" min="0" max="100" value="50" aria-label="Compare before and after">
+          <div class="labels">
+            <span class="pill">Before</span><span class="pill">After</span>
+          </div>
+        </div>
+        <div class="card-header">
+          <h3 class="card-title">Pavers Job 1 — Front Path Renewal</h3>
+          <span class="card-tag">Paving & Retaining</span>
+        </div>
+        <div class="card-body">
+          <details class="gallery">
+            <summary>View build photos</summary>
+            <div class="thumb-row">
+              <a href="images/paving1-before.jpg" data-lb><img src="images/paving1-before.jpg" alt="Before — pathway" loading="lazy"></a>
+              <a href="images/paving1-after.jpg" data-lb><img src="images/paving1-after.jpg" alt="After — pathway paved" loading="lazy"></a>
+            </div>
+          </details>
+        </div>
+      </article>
+
+      <!-- Paving 2 -->
+      <article class="card" data-cat="paving">
+        <div class="ba" aria-label="Before / After: Pavers Job 2">
+          <img src="images/paving2-before.jpg" alt="Courtyard before update" class="before" loading="lazy" />
+          <img src="images/paving2-after.jpg" alt="Courtyard refreshed with pavers" class="after" loading="lazy" />
+          <input type="range" min="0" max="100" value="50" aria-label="Compare before and after">
+          <div class="labels">
+            <span class="pill">Before</span><span class="pill">After</span>
+          </div>
+        </div>
+        <div class="card-header">
+          <h3 class="card-title">Pavers Job 2 — Courtyard Refresh</h3>
+          <span class="card-tag">Paving & Retaining</span>
+        </div>
+        <div class="card-body">
+          <details class="gallery">
+            <summary>View build photos</summary>
+            <div class="thumb-row">
+              <a href="images/paving2-before.jpg" data-lb><img src="images/paving2-before.jpg" alt="Before, courtyard" loading="lazy"></a>
+              <a href="images/paving2-after.jpg" data-lb><img src="images/paving2-after.jpg" alt="After, courtyard paved" loading="lazy"></a>
+            </div>
+          </details>
+        </div>
+      </article>
+
+      <!-- Pondless waterfall -->
+      <article class="card" data-cat="water">
+        <div class="ba" aria-label="Before / After: Pondless Waterfall">
+          <img src="images/pondless-before.jpg" alt="Garden corner before water feature" class="before" loading="lazy" />
+          <img src="images/pondless-after.jpg" alt="Pondless waterfall feature installed" class="after" loading="lazy" />
+          <input type="range" min="0" max="100" value="54" aria-label="Compare before and after">
+          <div class="labels"><span class="pill">Before</span><span class="pill">After</span></div>
+        </div>
+        <div class="card-header">
+          <h3 class="card-title">Pondless Waterfall Feature</h3>
+          <span class="card-tag">Ponds & Waterfalls</span>
+        </div>
+        <div class="card-body">
+          <details class="gallery">
+            <summary>View build photos</summary>
+            <div class="thumb-row">
+              <a href="images/pondless-before.jpg" data-lb><img src="images/pondless-before.jpg" alt="Before" loading="lazy"></a>
+              <a href="images/pondless-wip.jpg" data-lb><img src="images/pondless-wip.jpg" alt="During build" loading="lazy"></a>
+              <a href="images/pondless-after.jpg" data-lb><img src="images/pondless-after.jpg" alt="After" loading="lazy"></a>
+            </div>
+          </details>
+        </div>
+      </article>
+
+      <!-- Concrete pond -->
+      <article class="card" data-cat="water">
+        <div class="ba" aria-label="Before / After: Concrete Pond">
+          <img src="images/concretepond-before.jpg" alt="Yard with dug hole prior to pond" class="before" loading="lazy" />
+          <img src="images/concretepond-after.jpg" alt="Finished concrete pond decorated with rocks" class="after" loading="lazy" />
+          <input type="range" min="0" max="100" value="50" aria-label="Compare before and after">
+          <div class="labels"><span class="pill">Before</span><span class="pill">After</span></div>
+        </div>
+        <div class="card-header">
+          <h3 class="card-title">Courtyard Concrete Pond</h3>
+          <span class="card-tag">Ponds & Waterfalls</span>
+        </div>
+        <div class="card-body">
+          <details class="gallery">
+            <summary>View build photos</summary>
+            <div class="thumb-row">
+              <a href="images/concretepond-before.jpg" data-lb><img src="images/concretepond-before.jpg" alt="Before" loading="lazy"></a>
+              <a href="images/concretepond-wip1.jpg" data-lb><img src="images/concretepond-wip1.jpg" alt="During — concreting" loading="lazy"></a>
+              <a href="images/concretepond-wip2.jpg" data-lb><img src="images/concretepond-wip2.jpg" alt="During — filling" loading="lazy"></a>
+              <a href="images/concretepond-after.jpg" data-lb><img src="images/concretepond-after.jpg" alt="After" loading="lazy"></a>
+            </div>
+          </details>
+        </div>
+      </article>
+
+      <!-- Zen garden -->
+      <article class="card" data-cat="makeover">
+        <div class="ba" aria-label="Before / After: Zen Garden">
+          <img src="images/zen-before.jpg" alt="Area before zen garden makeover" class="before" loading="lazy" />
+          <img src="images/zen-after.jpg" alt="Completed zen garden with stones and plants" class="after" loading="lazy" />
+          <input type="range" min="0" max="100" value="50" aria-label="Compare before and after">
+          <div class="labels"><span class="pill">Before</span><span class="pill">After</span></div>
+        </div>
+        <div class="card-header">
+          <h3 class="card-title">Zen Garden Transformation</h3>
+          <span class="card-tag">Garden Makeovers</span>
+        </div>
+        <div class="card-body"></div>
+      </article>
+
+      <!-- Bee garden -->
+      <article class="card" data-cat="makeover">
+        <div class="ba" aria-label="Before / After: Bee Garden">
+          <img src="images/bee-before.jpg" alt="Yard before bee garden build" class="before" loading="lazy" />
+          <img src="images/bee-after1.jpg" alt="Bee garden with flowering plants" class="after" loading="lazy" />
+          <input type="range" min="0" max="100" value="52" aria-label="Compare before and after">
+          <div class="labels"><span class="pill">Before</span><span class="pill">After</span></div>
+        </div>
+        <div class="card-header">
+          <h3 class="card-title">Bee Garden — Pollinator Haven</h3>
+          <span class="card-tag">Garden Makeovers</span>
+        </div>
+        <div class="card-body">
+          <details class="gallery">
+            <summary>View build photos</summary>
+            <div class="thumb-row">
+              <a href="images/bee-during1.jpg" data-lb><img src="images/bee-during1.jpg" alt="During 1" loading="lazy"></a>
+              <a href="images/bee-during2.jpg" data-lb><img src="images/bee-during2.jpg" alt="During 2" loading="lazy"></a>
+              <a href="images/bee-during3.jpg" data-lb><img src="images/bee-during3.jpg" alt="During 3" loading="lazy"></a>
+              <a href="images/bee-during4.jpg" data-lb><img src="images/bee-during4.jpg" alt="During 4" loading="lazy"></a>
+              <a href="images/bee-during5.jpg" data-lb><img src="images/bee-during5.jpg" alt="During 5" loading="lazy"></a>
+              <a href="images/bee-after2.jpg" data-lb><img src="images/bee-after2.jpg" alt="After 2" loading="lazy"></a>
+            </div>
+          </details>
+        </div>
+      </article>
+
+      <!-- Hedges & screening -->
+      <article class="card" data-cat="hedges">
+        <div class="ba" aria-label="Before / After: Hedging">
+          <img src="images/hedge-before.jpg" alt="Front yard before hedges" class="before" loading="lazy" />
+          <img src="images/hedge-after1.jpg" alt="Front yard with new hedge screening" class="after" loading="lazy" />
+          <input type="range" min="0" max="100" value="50" aria-label="Compare before and after">
+          <div class="labels"><span class="pill">Before</span><span class="pill">After</span></div>
+        </div>
+        <div class="card-header">
+          <h3 class="card-title">Front Yard Hedging for Privacy</h3>
+          <span class="card-tag">Hedges & Screening</span>
+        </div>
+        <div class="card-body">
+          <details class="gallery">
+            <summary>More angles</summary>
+            <div class="thumb-row">
+              <a href="images/hedge-after2.jpg" data-lb><img src="images/hedge-after2.jpg" alt="After angle 2" loading="lazy"></a>
+              <a href="images/hedge-after3.jpg" data-lb><img src="images/hedge-after3.jpg" alt="After angle 3" loading="lazy"></a>
+            </div>
+          </details>
+        </div>
+      </article>
+
+      <!-- Side access steps & sleepers -->
+      <article class="card" data-cat="steps">
+        <div class="ba" aria-label="Before / After: Side Access Steps">
+          <img src="images/sidestep-before.jpg" alt="Side of house with natural gradient" class="before" loading="lazy" />
+          <img src="images/sidestep-after1.jpg" alt="Timber steps with sleepers under deck" class="after" loading="lazy" />
+          <input type="range" min="0" max="100" value="50" aria-label="Compare before and after">
+          <div class="labels"><span class="pill">Before</span><span class="pill">After</span></div>
+        </div>
+        <div class="card-header">
+          <h3 class="card-title">Side Access Steps & Sleeper Edge</h3>
+          <span class="card-tag">Steps & Access</span>
+        </div>
+        <div class="card-body">
+          <details class="gallery">
+            <summary>View build photos</summary>
+            <div class="thumb-row">
+              <a href="images/sidestep-during1.jpg" data-lb><img src="images/sidestep-during1.jpg" alt="During 1" loading="lazy"></a>
+              <a href="images/sidestep-during2.jpg" data-lb><img src="images/sidestep-during2.jpg" alt="During 2" loading="lazy"></a>
+              <a href="images/sidestep-after2.jpg" data-lb><img src="images/sidestep-after2.jpg" alt="After 2" loading="lazy"></a>
+              <a href="images/sidestep-after3.jpg" data-lb><img src="images/sidestep-after3.jpg" alt="After 3" loading="lazy"></a>
+            </div>
+          </details>
+        </div>
+      </article>
+
+      <!-- Driveway side steps -->
+      <article class="card" data-cat="steps">
+        <div class="ba" aria-label="Before / After: Steps near Driveway">
+          <img src="images/steps-before.jpg" alt="Space before steps were built" class="before" loading="lazy" />
+          <img src="images/steps-after.jpg" alt="Completed steps next to driveway" class="after" loading="lazy" />
+          <input type="range" min="0" max="100" value="50" aria-label="Compare before and after">
+          <div class="labels"><span class="pill">Before</span><span class="pill">After</span></div>
+        </div>
+        <div class="card-header">
+          <h3 class="card-title">Driveway Side Steps</h3>
+          <span class="card-tag">Steps & Access</span>
+        </div>
+        <div class="card-body">
+          <details class="gallery">
+            <summary>View build photo</summary>
+            <div class="thumb-row">
+              <a href="images/steps-during.jpg" data-lb><img src="images/steps-during.jpg" alt="During" loading="lazy"></a>
+            </div>
+          </details>
+        </div>
+      </article>
+
+      <!-- Maintenance — solar cleaning collage -->
+      <article class="card" data-cat="maint">
+        <a class="thumb" href="images/solar1.jpg" data-lb>
+          <img src="images/solar1.jpg" alt="Solar panel cleaning example" loading="lazy">
+        </a>
+        <div class="card-header">
+          <h3 class="card-title">Maintenance — Solar Panel Cleaning</h3>
+          <span class="card-tag">Maintenance</span>
+        </div>
+        <div class="card-body">
+          <div class="collage">
+            <a href="images/solar1.jpg" data-lb><img src="images/solar1.jpg" alt="Solar clean 1" loading="lazy"></a>
+            <a href="images/solar2.jpg" data-lb><img src="images/solar2.jpg" alt="Solar clean 2" loading="lazy"></a>
+            <a href="images/solar3.jpg" data-lb><img src="images/solar3.jpg" alt="Solar clean 3" loading="lazy"></a>
+            <a href="images/solar4.jpg" data-lb><img src="images/solar4.jpg" alt="Solar clean 4" loading="lazy"></a>
+          </div>
+        </div>
+      </article>
+
+    </div>
+  </main>
+
+  <!-- Footer -->
+  <footer class="site-footer">
+    <div class="container">
+      <p>© <span id="year"></span> White Lotus Landscaping — Gold Coast</p>
+      <p class="muted">Website designed by <a href="https://zanemcdermott.github.io/hello-static/" target="_blank" rel="noopener">Sidekick Sites</a></p>
     </div>
   </footer>
 
-  <a href="#top" class="to-top" aria-label="Back to top">↑</a>
-  <script src="script.js" defer></script>
+  <!-- Page JS (scoped) -->
+  <script>
+    // Year
+    document.getElementById('year').textContent = new Date().getFullYear();
+
+    // Filter logic
+    const chips = [...document.querySelectorAll('.chip')];
+    const cards = [...document.querySelectorAll('.card')];
+    chips.forEach(ch => ch.addEventListener('click', () => {
+      chips.forEach(c => c.classList.remove('is-active'));
+      ch.classList.add('is-active');
+      const f = ch.dataset.filter;
+      cards.forEach(card => {
+        const show = (f === 'all') || card.dataset.cat === f;
+        card.style.display = show ? '' : 'none';
+      });
+      window.scrollTo({ top: document.querySelector('.filter-bar').offsetTop, behavior: 'smooth' });
+    }));
+
+    // Before/After sliders
+    document.querySelectorAll('.ba').forEach(ba => {
+      const after = ba.querySelector('img.after');
+      const range = ba.querySelector('input[type="range"]');
+      const setClip = (val) => after.style.clipPath = `inset(0 ${100-val}% 0 0)`;
+      setClip(range.value);
+      range.addEventListener('input', e => setClip(e.target.value));
+    });
+
+    // Simple lightbox
+    const lb = (() => {
+      const el = document.createElement('div');
+      el.className = 'lb';
+      el.innerHTML = '<button class="close">Close</button><img alt="Expanded image">';
+      document.body.appendChild(el);
+      const img = el.querySelector('img');
+      const close = () => el.classList.remove('is-open');
+      el.addEventListener('click', (e) => { if (e.target === el || e.target.classList.contains('close')) close(); });
+      window.addEventListener('keydown', e => { if (e.key === 'Escape') close(); });
+      return { open: (src, alt) => { img.src = src; img.alt = alt || ''; el.classList.add('is-open'); } };
+    })();
+    document.querySelectorAll('[data-lb]').forEach(a => {
+      a.addEventListener('click', (e) => {
+        e.preventDefault();
+        const img = a.querySelector('img');
+        lb.open(a.getAttribute('href'), img ? img.alt : '');
+      });
+    });
+  </script>
 </body>
 </html>
