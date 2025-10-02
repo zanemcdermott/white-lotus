@@ -372,3 +372,13 @@ a:hover{ color: var(--accent-3); }
   .site-header, .hero, .cta, .site-footer, .nav-toggle{ display:none !important; }
   .section{ padding: 18px 0; }
 }
+
+.site-footer a {
+  color: #d75ca4; /* adjust to match your theme */
+  text-decoration: none;
+  font-weight: bold;
+}
+
+.site-footer a:hover {
+  text-decoration: underline;
+}
