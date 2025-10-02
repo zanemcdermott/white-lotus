@@ -1,160 +1,125 @@
 <!doctype html>
-<html lang="en" id="top">
+<html lang="en">
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Project Portfolio — White Lotus Landscaping</title>
-  <meta name="description" content="Hand-picked landscape transformations by White Lotus Landscaping — paving, water features, gardens, steps and more." />
+  <meta name="description" content="Hand-picked landscaping transformations across paving, water features, gardens, steps and more.">
 
   <!-- Open Graph -->
-  <meta property="og:title" content="Project Portfolio — White Lotus Landscaping" />
-  <meta property="og:description" content="Paving, water features, gardens, steps and more — before/after case studies by White Lotus Landscaping." />
-  <meta property="og:type" content="website" />
-  <meta property="og:url" content="https://zanemcdermott.github.io/white-lotus/portfolio.html" />
-  <meta property="og:image" content="images/hero-zen.jpg" />
+  <meta property="og:title" content="Project Portfolio — White Lotus Landscaping">
+  <meta property="og:description" content="See real before/after transformations: paving, ponds & waterfalls, garden makeovers, hedges, steps and maintenance.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://zanemcdermott.github.io/white-lotus/portfolio.html">
+  <meta property="og:image" content="images/hero-zen.jpg">
 
-  <!-- Favicon / Icons (already generated in your repo) -->
-  <link rel="icon" href="images/favicon-32.png" sizes="32x32" />
-  <link rel="apple-touch-icon" href="images/favicon-180.png" />
-  <link rel="icon" href="images/favicon.ico" sizes="any" />
-
-  <!-- Global styles -->
-  <link rel="stylesheet" href="style.css?v=2" />
+  <link rel="icon" href="images/favicon-32.png" sizes="32x32">
+  <link rel="apple-touch-icon" href="images/favicon-512.png">
+  <link rel="stylesheet" href="style.css?v=portfolio-2" />
   <style>
-    /* ---------- Portfolio page scoped styles ---------- */
-    .portfolio-page {
-      --ink: #ffffff;
-      --muted: rgba(255,255,255,.72);
-      --panel: #151217;
-      --panel-2: #0f0d11;
-      --brand-a: #9b4dca;
-      --brand-b: #d75ca4;
-    }
+    /* --- Portfolio page specific additions (kept small) --- */
 
-    .portfolio-hero {
-      color: var(--ink);
-      background:
-        radial-gradient(120% 140% at 10% 0%, rgba(215,92,164,.28) 0%, rgba(215,92,164,0) 55%),
-        radial-gradient(120% 120% at 90% 10%, rgba(155,77,202,.24) 0%, rgba(155,77,202,0) 60%),
-        linear-gradient(180deg, #161319 0%, #0f0d11 100%);
-      padding: 72px 0 40px;
+    .portfolio-hero{
+      padding: 72px 0 28px;
+      background: radial-gradient(1200px 420px at 50% -80px, rgba(255,255,255,.06), transparent 60%) , #0f0d12;
     }
-    .portfolio-hero .container { max-width: 1100px; }
-    .portfolio-hero h1 {
-      font-size: clamp(32px, 5vw, 52px);
-      line-height: 1.05;
-      margin: 0 0 12px;
-      letter-spacing: -0.02em;
-    }
-    .portfolio-hero p {
-      margin: 0;
-      color: var(--muted);
-      font-size: clamp(16px, 2.2vw, 18px);
-    }
+    .portfolio-hero .h1{ font-size: clamp(32px, 6vw, 54px); margin: 0 0 10px; }
+    .portfolio-hero .lead{ color: var(--muted, #cfcbd6); max-width: 62ch; }
 
-    /* Filter bar */
-    .filter-bar {
-      position: sticky; top: 0; z-index: 5;
-      backdrop-filter: blur(6px);
-      background: linear-gradient(180deg, rgba(15,13,17,.92), rgba(15,13,17,.88));
-      border-bottom: 1px solid rgba(255,255,255,.06);
+    .filter-bar{
+      display:flex; gap:10px; flex-wrap:wrap; margin: 18px 0 30px;
     }
-    .filter-inner { max-width: 1100px; margin: 0 auto; padding: 16px 20px; display: flex; gap: 8px; flex-wrap: wrap; }
-    .chip {
-      border: 1px solid rgba(255,255,255,.16);
-      color: var(--ink);
-      background: #141116;
-      border-radius: 999px;
-      padding: 8px 14px;
-      font-weight: 600;
-      font-size: 14px;
-      cursor: pointer;
-      transition: border-color .2s ease, background .2s ease, transform .06s ease;
-      user-select: none;
+    .filter-chip{
+      border:1px solid rgba(255,255,255,.1);
+      background:#19141f; color:#fff; padding:10px 14px; border-radius:999px;
+      font-weight:600; font-size:14px; cursor:pointer;
     }
-    .chip:hover { transform: translateY(-1px); }
-    .chip.is-active {
+    .filter-chip.is-active{
+      background: linear-gradient(135deg, #b84ecb, #6b4df6);
       border-color: transparent;
-      background: linear-gradient(135deg, var(--brand-a), var(--brand-b));
     }
 
-    /* Grid */
-    .portfolio-content { background: var(--panel-2); padding: 36px 0 80px; }
-    .grid { max-width: 1100px; margin: 0 auto; padding: 0 20px;
-      display: grid; grid-template-columns: repeat(12, 1fr); gap: 22px; }
-    .card {
+    .grid{
+      display:grid; gap:22px;
+      grid-template-columns:repeat(12,1fr);
+    }
+    .card{
       grid-column: span 12;
-      background: var(--panel);
-      border: 1px solid rgba(255,255,255,.06);
-      border-radius: 18px;
-      overflow: hidden;
-      box-shadow: 0 10px 26px rgba(0,0,0,.35);
+      background:#151119; border:1px solid rgba(255,255,255,.06);
+      border-radius:18px; overflow:hidden;
+      box-shadow: 0 10px 30px rgba(0,0,0,.25);
     }
-    @media (min-width: 820px) {
-      .card { grid-column: span 6; }
+    .card-body{ padding:18px 18px 20px; }
+    .eyebrow{
+      display:inline-flex; align-items:center; gap:10px;
+      background:#201827; color:#e6dff0; padding:8px 12px; border-radius:999px;
+      font-weight:700; letter-spacing:.2px; font-size:12px;
     }
-    .card-header { padding: 18px 18px 0; display: flex; align-items: baseline; justify-content: space-between; gap: 12px; }
-    .card-title { font-weight: 800; font-size: 18px; margin: 0; color: var(--ink); letter-spacing: -.01em; }
-    .card-tag {
-      font-size: 12px; font-weight: 700; letter-spacing: .06em; text-transform: uppercase;
-      padding: 6px 10px; border-radius: 999px;
-      background: rgba(215,92,164,.18); color: #ffd8f0; white-space: nowrap;
-    }
-    .card-body { padding: 14px 18px 18px; color: var(--muted); }
-    .thumb {
-      display: block; position: relative;
-      aspect-ratio: 16/9; background: #0b090d; overflow: hidden;
-    }
-    .thumb img { width: 100%; height: 100%; object-fit: cover; display: block; }
+    .title{ font-size: clamp(20px, 3.8vw, 28px); margin: 10px 0 6px; }
 
     /* Before/After slider */
-    .ba {
-      position: relative; aspect-ratio: 16/9; overflow: hidden; background: #0b090d;
-      border-bottom: 1px solid rgba(255,255,255,.06);
+    .ba{
+      position:relative; aspect-ratio: 16/9; background:#0b0910;
+      --pos: 50; /* 0..100 (percent) */
     }
-    .ba img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
-    .ba img.after { clip-path: inset(0 0 0 50%); transition: clip-path .05s linear; }
-    .ba input[type="range"] {
-      -webkit-appearance: none; appearance: none;
-      position: absolute; inset: 0; width: 100%; height: 100%; background: none; margin: 0;
+    .ba img{
+      position:absolute; inset:0; width:100%; height:100%; object-fit:cover;
     }
-    .ba input[type="range"]::-webkit-slider-thumb {
-      -webkit-appearance: none; appearance: none; width: 3px; height: 100%;
-      background: linear-gradient(180deg, var(--brand-a), var(--brand-b));
-      box-shadow: 0 0 0 9999px rgba(0,0,0,0); border: 0;
+    .ba .after{
+      clip-path: polygon(0 0, calc(var(--pos)*1%) 0, calc(var(--pos)*1%) 100%, 0 100%);
+      /* ^ shows left portion to --pos% so base = BEFORE (full), overlay = AFTER (revealed from left) */
+      mix-blend-mode: normal;
     }
-    .ba .labels {
-      position: absolute; inset: 12px 12px auto; display: flex; gap: 10px;
+    .ba .twist{
+      position:absolute; top:0; bottom:0; left:calc(var(--pos)*1%); width:2px; 
+      background: rgba(255,255,255,.9); box-shadow: 0 0 0 1px rgba(0,0,0,.5);
+      transform: translateX(-1px); z-index:3;
     }
-    .pill {
-      backdrop-filter: blur(6px);
-      background: rgba(0,0,0,.42); color: #fff; border: 1px solid rgba(255,255,255,.18);
-      padding: 6px 10px; border-radius: 999px; font-size: 12px; font-weight: 700;
+    .ba .knob{
+      position:absolute; left:calc(var(--pos)*1%); top:50%; transform:translate(-50%,-50%);
+      width:44px; height:44px; border-radius:50%;
+      background:#fff; color:#111; display:grid; place-items:center; z-index:4;
+      box-shadow: 0 6px 24px rgba(0,0,0,.35);
+    }
+    .ba .ba-chips{
+      position:absolute; top:12px; left:12px; display:flex; gap:8px; z-index:5;
+    }
+    .ba .ba-chip{
+      appearance:none; border:0; padding:7px 11px; border-radius:999px;
+      font: 600 12px/1.05 system-ui, -apple-system, Segoe UI, Roboto, Inter, Arial;
+      color:#fff; background: rgba(0,0,0,.45); backdrop-filter: blur(6px);
+    }
+    .ba .ba-chip.active{ background: linear-gradient(135deg, #b84ecb, #6b4df6); }
+    .ba input[type="range"]{
+      position:absolute; inset:0; width:100%; height:100%;
+      opacity:0; cursor: ew-resize; z-index:6;
     }
 
-    /* Collage for multi-image jobs (e.g., maintenance) */
-    .collage { display: grid; grid-template-columns: repeat(4, 1fr); gap: 8px; }
-    .collage a { aspect-ratio: 4/3; overflow: hidden; border-radius: 12px; border: 1px solid rgba(255,255,255,.06); background: #0b090d; }
-    .collage img { width: 100%; height: 100%; object-fit: cover; display: block; }
+    details.summary{
+      margin-top: 10px;
+      background:#120e17; border:1px dashed rgba(255,255,255,.12);
+      padding:12px 14px; border-radius:12px;
+    }
+    details.summary > summary{
+      list-style:none; cursor:pointer; font-weight:700;
+    }
+    details.summary[open]{ border-style: solid; }
 
-    /* Details gallery (build steps) */
-    details.gallery { margin-top: 8px; border-top: 1px dashed rgba(255,255,255,.1); padding-top: 12px; }
-    details.gallery > summary { cursor: pointer; color: #fff; font-weight: 700; }
-    .thumb-row { display: grid; grid-template-columns: repeat(4,1fr); gap: 10px; margin-top: 12px; }
-    .thumb-row a { aspect-ratio: 4/3; overflow: hidden; border-radius: 10px; border: 1px solid rgba(255,255,255,.06); background:#0b090d; }
-    .thumb-row img { width: 100%; height: 100%; object-fit: cover; }
+    .build-grid{ display:grid; gap:10px; grid-template-columns: repeat(3, 1fr); margin-top:12px; }
+    .build-grid img{ width:100%; height: 160px; object-fit:cover; border-radius:10px; }
 
-    /* Lightbox */
-    .lb { position: fixed; inset: 0; background: rgba(0,0,0,.9); display: none; align-items: center; justify-content: center; z-index: 40; }
-    .lb img { max-width: 92vw; max-height: 86vh; border-radius: 12px; box-shadow: 0 20px 50px rgba(0,0,0,.6); }
-    .lb.is-open { display: flex; }
-    .lb .close { position: fixed; top: 16px; right: 16px; background: rgba(0,0,0,.6); color: #fff; border: 1px solid rgba(255,255,255,.2);
-      padding: 8px 12px; border-radius: 999px; cursor: pointer; font-weight: 700; }
+    @media (min-width: 820px){
+      .card{ grid-column: span 6; }
+      .build-grid img{ height: 180px; }
+    }
+    @media (min-width: 1200px){
+      .card{ grid-column: span 4; }
+    }
   </style>
 </head>
+<body>
 
-<body class="portfolio-page">
-  <!-- Site header (same structure as other pages) -->
+  <!-- Header (uses your existing global header styles) -->
   <header class="site-header">
     <div class="container header-inner">
       <a class="brand" href="index.html" aria-label="White Lotus Landscaping">
@@ -162,332 +127,367 @@
              onerror="this.onerror=null;this.src='images/logo.jpg';" />
         <span class="brand-text">White Lotus Landscaping</span>
       </a>
-      <button class="nav-toggle" aria-label="Open menu" aria-expanded="false">
-      <span></span>
-      </button>
-      <nav class="site-nav" data-collapsed="true"> … </nav>
+      <button class="nav-toggle" aria-label="Open menu" aria-expanded="false"></button>
+      <nav class="site-nav">
         <a href="index.html">Home</a>
         <a href="services.html">Services</a>
-        <a class="is-active" href="portfolio.html">Portfolio</a>
+        <a class="is-current" href="portfolio.html">Portfolio</a>
         <a href="about.html">About</a>
-        <a class="btn btn--small" href="contact.html">Get a Quote</a>
       </nav>
+      <a class="button header-cta" href="contact.html">Get a Quote</a>
     </div>
   </header>
 
-  <!-- Hero -->
-  <section class="portfolio-hero">
-    <div class="container">
-      <h1>Project Portfolio</h1>
-      <p>Hand-picked transformations across paving, water features, gardens, steps & access, and more.</p>
-    </div>
-  </section>
+  <main>
+    <section class="portfolio-hero section">
+      <div class="container">
+        <h1 class="h1">Project Portfolio</h1>
+        <p class="lead">Hand-picked transformations across paving, water features, gardens, hedges & screening, steps and regular maintenance.</p>
 
-  <!-- Filters -->
-  <div class="filter-bar">
-    <div class="filter-inner">
-      <button class="chip is-active" data-filter="all">All</button>
-      <button class="chip" data-filter="paving">Paving &amp; Retaining</button>
-      <button class="chip" data-filter="water">Ponds &amp; Waterfalls</button>
-      <button class="chip" data-filter="makeover">Garden Makeovers</button>
-      <button class="chip" data-filter="hedges">Hedges &amp; Screening</button>
-      <button class="chip" data-filter="steps">Steps &amp; Access</button>
-      <button class="chip" data-filter="maint">Maintenance</button>
-    </div>
-  </div>
-
-  <!-- Grid -->
-  <main class="portfolio-content">
-    <div class="grid">
-
-      <!-- Paving 1 -->
-      <article class="card" data-cat="paving">
-        <div class="ba" aria-label="Before / After: Pavers Job 1">
-          <img src="images/paving1-after.jpg" alt="Front path area before paving" class="before" loading="lazy" />
-          <img src="images/paving1-before.jpg" alt="Front path renewed with fresh pavers" class="after" loading="lazy" />
-          <input type="range" min="0" max="100" value="50" aria-label="Compare before and after">
-          <div class="labels">
-            <span class="pill">Before</span><span class="pill">After</span>
-          </div>
+        <div class="filter-bar" id="filterBar" role="tablist" aria-label="Filter projects">
+          <button class="filter-chip is-active" data-filter="all">All</button>
+          <button class="filter-chip" data-filter="paving">Paving & Retaining</button>
+          <button class="filter-chip" data-filter="water">Ponds & Waterfalls</button>
+          <button class="filter-chip" data-filter="makeover">Garden Makeovers</button>
+          <button class="filter-chip" data-filter="hedges">Hedges & Screening</button>
+          <button class="filter-chip" data-filter="steps">Steps & Access</button>
+          <button class="filter-chip" data-filter="maintenance">Maintenance</button>
         </div>
-        <div class="card-header">
-          <h3 class="card-title">Pavers Job 1 — Front Path Renewal</h3>
-          <span class="card-tag">Paving & Retaining</span>
-        </div>
-        <div class="card-body">
-          <details class="gallery">
-            <summary>View build photos</summary>
-            <div class="thumb-row">
-              <a href="images/paving1-after.jpg" data-lb><img src="images/paving1-before.jpg" alt="Before — pathway" loading="lazy"></a>
-              <a href="images/paving1-before.jpg" data-lb><img src="images/paving1-after.jpg" alt="After — pathway paved" loading="lazy"></a>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="container">
+        <div class="grid" id="portfolioGrid">
+
+          <!-- ================= PAVING ================= -->
+          <article class="card" data-cat="paving">
+            <div class="ba" aria-label="Before and After slider — Pavers Job 1">
+              <img class="before" src="images/paving1-before.jpg" alt="Before — old front path pavers" />
+              <img class="after"  src="images/paving1-after.jpg"  alt="After — new tiled front path" />
+              <div class="twist" aria-hidden="true"></div>
+              <div class="knob" aria-hidden="true">↔</div>
+              <div class="ba-chips">
+                <button type="button" class="ba-chip" data-value="0">Before</button>
+                <button type="button" class="ba-chip" data-value="100">After</button>
+              </div>
+              <input class="ba-range" type="range" min="0" max="100" value="50" aria-label="Reveal after photo" />
             </div>
-          </details>
-        </div>
-      </article>
-
-      <!-- Paving 2 -->
-      <article class="card" data-cat="paving">
-        <div class="ba" aria-label="Before / After: Pavers Job 2">
-          <img src="images/paving2-after.jpg" alt="Courtyard before update" class="before" loading="lazy" />
-          <img src="images/paving2-before.jpg" alt="Courtyard refreshed with pavers" class="after" loading="lazy" />
-          <input type="range" min="0" max="100" value="50" aria-label="Compare before and after">
-          <div class="labels">
-            <span class="pill">Before</span><span class="pill">After</span>
-          </div>
-        </div>
-        <div class="card-header">
-          <h3 class="card-title">Pavers Job 2 — Courtyard Refresh</h3>
-          <span class="card-tag">Paving & Retaining</span>
-        </div>
-        <div class="card-body">
-          <details class="gallery">
-            <summary>View build photos</summary>
-            <div class="thumb-row">
-              <a href="images/paving2-before.jpg" data-lb><img src="images/paving2-before.jpg" alt="Before, courtyard" loading="lazy"></a>
-              <a href="images/paving2-after.jpg" data-lb><img src="images/paving2-after.jpg" alt="After, courtyard paved" loading="lazy"></a>
+            <div class="card-body">
+              <span class="eyebrow">PAVING &amp; RETAINING</span>
+              <h3 class="title">Pavers Job 1 — Front Path Renewal</h3>
+              <details class="summary">
+                <summary>View build photos</summary>
+                <div class="build-grid">
+                  <img src="images/paving1-before.jpg" alt="Before">
+                  <img src="images/paving1-after.jpg" alt="After">
+                </div>
+              </details>
             </div>
-          </details>
-        </div>
-      </article>
+          </article>
 
-      <!-- Pondless waterfall -->
-      <article class="card" data-cat="water">
-        <div class="ba" aria-label="Before / After: Pondless Waterfall">
-          <img src="images/pondless-after.jpg" alt="Garden corner before water feature" class="before" loading="lazy" />
-          <img src="images/pondless-before.jpg" alt="Pondless waterfall feature installed" class="after" loading="lazy" />
-          <input type="range" min="0" max="100" value="54" aria-label="Compare before and after">
-          <div class="labels"><span class="pill">Before</span><span class="pill">After</span></div>
-        </div>
-        <div class="card-header">
-          <h3 class="card-title">Pondless Waterfall Feature</h3>
-          <span class="card-tag">Ponds & Waterfalls</span>
-        </div>
-        <div class="card-body">
-          <details class="gallery">
-            <summary>View build photos</summary>
-            <div class="thumb-row">
-              <a href="images/pondless-after.jpg" data-lb><img src="images/pondless-before.jpg" alt="Before" loading="lazy"></a>
-              <a href="images/pondless-wip.jpg" data-lb><img src="images/pondless-wip.jpg" alt="During build" loading="lazy"></a>
-              <a href="images/pondless-before.jpg" data-lb><img src="images/pondless-after.jpg" alt="After" loading="lazy"></a>
+          <article class="card" data-cat="paving">
+            <div class="ba" aria-label="Before and After slider — Pavers Job 2">
+              <img class="before" src="images/paving2-before.jpg" alt="Before — worn drive edging and path" />
+              <img class="after"  src="images/paving2-after.jpg"  alt="After — fresh pavers and edging" />
+              <div class="twist"></div><div class="knob">↔</div>
+              <div class="ba-chips">
+                <button type="button" class="ba-chip" data-value="0">Before</button>
+                <button type="button" class="ba-chip" data-value="100">After</button>
+              </div>
+              <input class="ba-range" type="range" min="0" max="100" value="50" />
             </div>
-          </details>
-        </div>
-      </article>
-
-      <!-- Concrete pond -->
-      <article class="card" data-cat="water">
-        <div class="ba" aria-label="Before / After: Concrete Pond">
-          <img src="images/concretepond-after.jpg" alt="Yard with dug hole prior to pond" class="before" loading="lazy" />
-          <img src="images/concretepond-before.jpg" alt="Finished concrete pond decorated with rocks" class="after" loading="lazy" />
-          <input type="range" min="0" max="100" value="50" aria-label="Compare before and after">
-          <div class="labels"><span class="pill">Before</span><span class="pill">After</span></div>
-        </div>
-        <div class="card-header">
-          <h3 class="card-title">Courtyard Concrete Pond</h3>
-          <span class="card-tag">Ponds & Waterfalls</span>
-        </div>
-        <div class="card-body">
-          <details class="gallery">
-            <summary>View build photos</summary>
-            <div class="thumb-row">
-              <a href="images/concretepond-after.jpg" data-lb><img src="images/concretepond-before.jpg" alt="Before" loading="lazy"></a>
-              <a href="images/concretepond-wip1.jpg" data-lb><img src="images/concretepond-wip1.jpg" alt="During — concreting" loading="lazy"></a>
-              <a href="images/concretepond-wip2.jpg" data-lb><img src="images/concretepond-wip2.jpg" alt="During — filling" loading="lazy"></a>
-              <a href="images/concretepond-before.jpg" data-lb><img src="images/concretepond-after.jpg" alt="After" loading="lazy"></a>
+            <div class="card-body">
+              <span class="eyebrow">PAVING &amp; RETAINING</span>
+              <h3 class="title">Pavers Job 2 — Drive Edge & Patio</h3>
+              <details class="summary">
+                <summary>View build photos</summary>
+                <div class="build-grid">
+                  <img src="images/paving2-before.jpg" alt="Before">
+                  <img src="images/paving2-after.jpg" alt="After">
+                </div>
+              </details>
             </div>
-          </details>
-        </div>
-      </article>
+          </article>
 
-      <!-- Zen garden -->
-      <article class="card" data-cat="makeover">
-        <div class="ba" aria-label="Before / After: Zen Garden">
-          <img src="images/zen-after.jpg" alt="Area before zen garden makeover" class="before" loading="lazy" />
-          <img src="images/zen-before.jpg" alt="Completed zen garden with stones and plants" class="after" loading="lazy" />
-          <input type="range" min="0" max="100" value="50" aria-label="Compare before and after">
-          <div class="labels"><span class="pill">Before</span><span class="pill">After</span></div>
-        </div>
-        <div class="card-header">
-          <h3 class="card-title">Zen Garden Transformation</h3>
-          <span class="card-tag">Garden Makeovers</span>
-        </div>
-        <div class="card-body"></div>
-      </article>
-
-      <!-- Bee garden -->
-      <article class="card" data-cat="makeover">
-        <div class="ba" aria-label="Before / After: Bee Garden">
-          <img src="images/bee-after1.jpg" alt="Yard before bee garden build" class="before" loading="lazy" />
-          <img src="images/bee-before.jpg" alt="Bee garden with flowering plants" class="after" loading="lazy" />
-          <input type="range" min="0" max="100" value="52" aria-label="Compare before and after">
-          <div class="labels"><span class="pill">Before</span><span class="pill">After</span></div>
-        </div>
-        <div class="card-header">
-          <h3 class="card-title">Bee Garden — Pollinator Haven</h3>
-          <span class="card-tag">Garden Makeovers</span>
-        </div>
-        <div class="card-body">
-          <details class="gallery">
-            <summary>View build photos</summary>
-            <div class="thumb-row">
-              <a href="images/bee-during1.jpg" data-lb><img src="images/bee-during1.jpg" alt="During 1" loading="lazy"></a>
-              <a href="images/bee-during2.jpg" data-lb><img src="images/bee-during2.jpg" alt="During 2" loading="lazy"></a>
-              <a href="images/bee-during3.jpg" data-lb><img src="images/bee-during3.jpg" alt="During 3" loading="lazy"></a>
-              <a href="images/bee-during4.jpg" data-lb><img src="images/bee-during4.jpg" alt="During 4" loading="lazy"></a>
-              <a href="images/bee-during5.jpg" data-lb><img src="images/bee-during5.jpg" alt="During 5" loading="lazy"></a>
-              <a href="images/bee-after2.jpg" data-lb><img src="images/bee-after2.jpg" alt="After 2" loading="lazy"></a>
+          <!-- ================= WATER FEATURES ================= -->
+          <article class="card" data-cat="water">
+            <div class="ba" aria-label="Before and After slider — Pondless Infinite Waterfall">
+              <img class="before" src="images/pondless-before.jpg" alt="Before — corner before water feature" />
+              <img class="after"  src="images/pondless-after.jpg"  alt="After — pondless infinite waterfall installed" />
+              <div class="twist"></div><div class="knob">↔</div>
+              <div class="ba-chips">
+                <button type="button" class="ba-chip" data-value="0">Before</button>
+                <button type="button" class="ba-chip" data-value="100">After</button>
+              </div>
+              <input class="ba-range" type="range" min="0" max="100" value="50" />
             </div>
-          </details>
-        </div>
-      </article>
-
-      <!-- Hedges & screening -->
-      <article class="card" data-cat="hedges">
-        <div class="ba" aria-label="Before / After: Hedging">
-          <img src="images/hedge-after1.jpg" alt="Front yard before hedges" class="before" loading="lazy" />
-          <img src="images/hedge-before.jpg" alt="Front yard with new hedge screening" class="after" loading="lazy" />
-          <input type="range" min="0" max="100" value="50" aria-label="Compare before and after">
-          <div class="labels"><span class="pill">Before</span><span class="pill">After</span></div>
-        </div>
-        <div class="card-header">
-          <h3 class="card-title">Front Yard Hedging for Privacy</h3>
-          <span class="card-tag">Hedges & Screening</span>
-        </div>
-        <div class="card-body">
-          <details class="gallery">
-            <summary>More angles</summary>
-            <div class="thumb-row">
-              <a href="images/hedge-after2.jpg" data-lb><img src="images/hedge-after2.jpg" alt="After angle 2" loading="lazy"></a>
-              <a href="images/hedge-after3.jpg" data-lb><img src="images/hedge-after3.jpg" alt="After angle 3" loading="lazy"></a>
+            <div class="card-body">
+              <span class="eyebrow">PONDS &amp; WATERFALLS</span>
+              <h3 class="title">Pondless Infinite Waterfall</h3>
+              <details class="summary">
+                <summary>View build photos</summary>
+                <div class="build-grid">
+                  <img src="images/pondless-before.jpg" alt="Before">
+                  <img src="images/pondless-wip.jpg" alt="During">
+                  <img src="images/pondless-after.jpg" alt="After">
+                </div>
+              </details>
             </div>
-          </details>
-        </div>
-      </article>
+          </article>
 
-      <!-- Side access steps & sleepers -->
-      <article class="card" data-cat="steps">
-        <div class="ba" aria-label="Before / After: Side Access Steps">
-          <img src="images/sidestep-after1.jpg" alt="Side of house with natural gradient" class="before" loading="lazy" />
-          <img src="images/sidestep-before.jpg" alt="Timber steps with sleepers under deck" class="after" loading="lazy" />
-          <input type="range" min="0" max="100" value="50" aria-label="Compare before and after">
-          <div class="labels"><span class="pill">Before</span><span class="pill">After</span></div>
-        </div>
-        <div class="card-header">
-          <h3 class="card-title">Side Access Steps & Sleeper Edge</h3>
-          <span class="card-tag">Steps & Access</span>
-        </div>
-        <div class="card-body">
-          <details class="gallery">
-            <summary>View build photos</summary>
-            <div class="thumb-row">
-              <a href="images/sidestep-during1.jpg" data-lb><img src="images/sidestep-during1.jpg" alt="During 1" loading="lazy"></a>
-              <a href="images/sidestep-during2.jpg" data-lb><img src="images/sidestep-during2.jpg" alt="During 2" loading="lazy"></a>
-              <a href="images/sidestep-after2.jpg" data-lb><img src="images/sidestep-after2.jpg" alt="After 2" loading="lazy"></a>
-              <a href="images/sidestep-after3.jpg" data-lb><img src="images/sidestep-after3.jpg" alt="After 3" loading="lazy"></a>
+          <article class="card" data-cat="water">
+            <div class="ba" aria-label="Before and After slider — Concrete Pond">
+              <img class="before" src="images/concretepond-before.jpg" alt="Before — hole dug for concrete pond" />
+              <img class="after"  src="images/concretepond-after.jpg"  alt="After — finished concrete pond" />
+              <div class="twist"></div><div class="knob">↔</div>
+              <div class="ba-chips">
+                <button type="button" class="ba-chip" data-value="0">Before</button>
+                <button type="button" class="ba-chip" data-value="100">After</button>
+              </div>
+              <input class="ba-range" type="range" min="0" max="100" value="50" />
             </div>
-          </details>
-        </div>
-      </article>
-
-      <!-- Driveway side steps -->
-      <article class="card" data-cat="steps">
-        <div class="ba" aria-label="Before / After: Steps near Driveway">
-          <img src="images/steps-after.jpg" alt="Space before steps were built" class="before" loading="lazy" />
-          <img src="images/steps-before.jpg" alt="Completed steps next to driveway" class="after" loading="lazy" />
-          <input type="range" min="0" max="100" value="50" aria-label="Compare before and after">
-          <div class="labels"><span class="pill">Before</span><span class="pill">After</span></div>
-        </div>
-        <div class="card-header">
-          <h3 class="card-title">Driveway Side Steps</h3>
-          <span class="card-tag">Steps & Access</span>
-        </div>
-        <div class="card-body">
-          <details class="gallery">
-            <summary>View build photo</summary>
-            <div class="thumb-row">
-              <a href="images/steps-during.jpg" data-lb><img src="images/steps-during.jpg" alt="During" loading="lazy"></a>
+            <div class="card-body">
+              <span class="eyebrow">PONDS &amp; WATERFALLS</span>
+              <h3 class="title">Concrete Pond — Dig to Decorated</h3>
+              <details class="summary">
+                <summary>View build photos</summary>
+                <div class="build-grid">
+                  <img src="images/concretepond-before.jpg" alt="Before">
+                  <img src="images/concretepond-wip1.jpg" alt="During">
+                  <img src="images/concretepond-wip2.jpg" alt="During">
+                  <img src="images/concretepond-after.jpg" alt="After">
+                </div>
+              </details>
             </div>
-          </details>
-        </div>
-      </article>
+          </article>
 
-      <!-- Maintenance — solar cleaning collage -->
-      <article class="card" data-cat="maint">
-        <a class="thumb" href="images/solar1.jpg" data-lb>
-          <img src="images/solar1.jpg" alt="Solar panel cleaning example" loading="lazy">
-        </a>
-        <div class="card-header">
-          <h3 class="card-title">Maintenance — Solar Panel Cleaning</h3>
-          <span class="card-tag">Maintenance</span>
-        </div>
-        <div class="card-body">
-          <div class="collage">
-            <a href="images/solar1.jpg" data-lb><img src="images/solar1.jpg" alt="Solar clean 1" loading="lazy"></a>
-            <a href="images/solar2.jpg" data-lb><img src="images/solar2.jpg" alt="Solar clean 2" loading="lazy"></a>
-            <a href="images/solar3.jpg" data-lb><img src="images/solar3.jpg" alt="Solar clean 3" loading="lazy"></a>
-            <a href="images/solar4.jpg" data-lb><img src="images/solar4.jpg" alt="Solar clean 4" loading="lazy"></a>
-          </div>
-        </div>
-      </article>
+          <!-- ================= MAKEOVERS ================= -->
+          <article class="card" data-cat="makeover">
+            <div class="ba" aria-label="Before and After slider — Zen Garden Makeover">
+              <img class="before" src="images/zen-before.jpg" alt="Before — garden area prior to makeover" />
+              <img class="after"  src="images/zen-after.jpg"  alt="After — finished zen garden" />
+              <div class="twist"></div><div class="knob">↔</div>
+              <div class="ba-chips">
+                <button type="button" class="ba-chip" data-value="0">Before</button>
+                <button type="button" class="ba-chip" data-value="100">After</button>
+              </div>
+              <input class="ba-range" type="range" min="0" max="100" value="50" />
+            </div>
+            <div class="card-body">
+              <span class="eyebrow">GARDEN MAKEOVERS</span>
+              <h3 class="title">Zen Garden — Calm, Minimal, Tidy</h3>
+              <details class="summary">
+                <summary>View build photos</summary>
+                <div class="build-grid">
+                  <img src="images/zen-before.jpg" alt="Before">
+                  <img src="images/zen-after.jpg" alt="After">
+                </div>
+              </details>
+            </div>
+          </article>
 
-    </div>
+          <!-- ================= HEDGES ================= -->
+          <article class="card" data-cat="hedges">
+            <div class="ba" aria-label="Before and After slider — Front Yard Screening Hedges">
+              <img class="before" src="images/hedge-before.jpg" alt="Before — open front yard" />
+              <img class="after"  src="images/hedge-after1.jpg"  alt="After — hedges installed" />
+              <div class="twist"></div><div class="knob">↔</div>
+              <div class="ba-chips">
+                <button type="button" class="ba-chip" data-value="0">Before</button>
+                <button type="button" class="ba-chip" data-value="100">After</button>
+              </div>
+              <input class="ba-range" type="range" min="0" max="100" value="50" />
+            </div>
+            <div class="card-body">
+              <span class="eyebrow">HEDGES &amp; SCREENING</span>
+              <h3 class="title">Front Yard — Natural Privacy</h3>
+              <details class="summary">
+                <summary>View build photos</summary>
+                <div class="build-grid">
+                  <img src="images/hedge-after1.jpg" alt="After">
+                  <img src="images/hedge-after2.jpg" alt="After">
+                  <img src="images/hedge-after3.jpg" alt="After">
+                </div>
+              </details>
+            </div>
+          </article>
+
+          <!-- ================= STEPS & ACCESS ================= -->
+          <article class="card" data-cat="steps">
+            <div class="ba" aria-label="Before and After slider — Steps by Drive">
+              <img class="before" src="images/steps-before.jpg" alt="Before — slope beside driveway" />
+              <img class="after"  src="images/steps-after.jpg"  alt="After — new steps installed" />
+              <div class="twist"></div><div class="knob">↔</div>
+              <div class="ba-chips">
+                <button type="button" class="ba-chip" data-value="0">Before</button>
+                <button type="button" class="ba-chip" data-value="100">After</button>
+              </div>
+              <input class="ba-range" type="range" min="0" max="100" value="50" />
+            </div>
+            <div class="card-body">
+              <span class="eyebrow">STEPS &amp; ACCESS</span>
+              <h3 class="title">Steps Next to Driveway</h3>
+              <details class="summary">
+                <summary>View build photos</summary>
+                <div class="build-grid">
+                  <img src="images/steps-before.jpg" alt="Before">
+                  <img src="images/steps-during.jpg" alt="During">
+                  <img src="images/steps-after.jpg" alt="After">
+                </div>
+              </details>
+            </div>
+          </article>
+
+          <article class="card" data-cat="steps">
+            <div class="ba" aria-label="Before and After slider — Side Access Steps + Sleepers">
+              <img class="before" src="images/sidestep-before.jpg" alt="Before — natural gradient along house" />
+              <img class="after"  src="images/sidestep-after1.jpg"  alt="After — tidy steps and sleepers" />
+              <div class="twist"></div><div class="knob">↔</div>
+              <div class="ba-chips">
+                <button type="button" class="ba-chip" data-value="0">Before</button>
+                <button type="button" class="ba-chip" data-value="100">After</button>
+              </div>
+              <input class="ba-range" type="range" min="0" max="100" value="50" />
+            </div>
+            <div class="card-body">
+              <span class="eyebrow">STEPS &amp; ACCESS</span>
+              <h3 class="title">Side of House Steps + Sleepers</h3>
+              <details class="summary">
+                <summary>View build photos</summary>
+                <div class="build-grid">
+                  <img src="images/sidestep-during1.jpg" alt="During">
+                  <img src="images/sidestep-during2.jpg" alt="During">
+                  <img src="images/sidestep-after2.jpg" alt="After">
+                  <img src="images/sidestep-after3.jpg" alt="After">
+                </div>
+              </details>
+            </div>
+          </article>
+
+          <!-- ================= MAINTENANCE (SOLAR CLEAN) ================= -->
+          <article class="card" data-cat="maintenance">
+            <div class="ba" aria-label="Before and After slider — Panel Clean (representative)">
+              <img class="before" src="images/solar1.jpg" alt="Solar panels before cleaning" />
+              <img class="after"  src="images/solar2.jpg" alt="Solar panels after cleaning" />
+              <div class="twist"></div><div class="knob">↔</div>
+              <div class="ba-chips">
+                <button type="button" class="ba-chip" data-value="0">Before</button>
+                <button type="button" class="ba-chip" data-value="100">After</button>
+              </div>
+              <input class="ba-range" type="range" min="0" max="100" value="50" />
+            </div>
+            <div class="card-body">
+              <span class="eyebrow">MAINTENANCE</span>
+              <h3 class="title">Solar Panel Cleaning</h3>
+              <details class="summary">
+                <summary>More photos</summary>
+                <div class="build-grid">
+                  <img src="images/solar1.jpg" alt="">
+                  <img src="images/solar2.jpg" alt="">
+                  <img src="images/solar3.jpg" alt="">
+                  <img src="images/solar4.jpg" alt="">
+                </div>
+              </details>
+            </div>
+          </article>
+
+        </div>
+      </div>
+    </section>
   </main>
 
-  <!-- Footer -->
   <footer class="site-footer">
-    <div class="container">
-      <p>© <span id="year"></span> White Lotus Landscaping — Gold Coast</p>
-      <p class="muted">Website designed by <a href="https://zanemcdermott.github.io/hello-static/" target="_blank" rel="noopener">Sidekick Sites</a></p>
+    <div class="container footer-inner">
+      <div class="foot-brand">
+        <img src="images/logo-transparent.png" alt="" height="36" onerror="this.onerror=null;this.src='images/logo.jpg';">
+        <div>© <span id="year"></span> White Lotus Landscaping</div>
+      </div>
+      <nav class="foot-nav">
+        <a href="index.html">Home</a>
+        <a href="services.html">Services</a>
+        <a class="is-current" href="portfolio.html">Portfolio</a>
+        <a href="about.html">About</a>
+        <a href="contact.html" class="button small">Get a Quote</a>
+      </nav>
+      <div class="foot-credit">
+        Website designed by
+        <a href="https://zanemcdermott.github.io/hello-static/" target="_blank" rel="noopener">Sidekick&nbsp;Sites</a>
+      </div>
     </div>
   </footer>
 
-  <!-- Page JS (scoped) -->
   <script>
-    // Year
+    // Year in footer
     document.getElementById('year').textContent = new Date().getFullYear();
 
-    // Filter logic
-    const chips = [...document.querySelectorAll('.chip')];
-    const cards = [...document.querySelectorAll('.card')];
-    chips.forEach(ch => ch.addEventListener('click', () => {
-      chips.forEach(c => c.classList.remove('is-active'));
-      ch.classList.add('is-active');
-      const f = ch.dataset.filter;
-      cards.forEach(card => {
-        const show = (f === 'all') || card.dataset.cat === f;
-        card.style.display = show ? '' : 'none';
-      });
-      window.scrollTo({ top: document.querySelector('.filter-bar').offsetTop, behavior: 'smooth' });
-    }));
-
-    // Before/After sliders
-    document.querySelectorAll('.ba').forEach(ba => {
-      const after = ba.querySelector('img.after');
-      const range = ba.querySelector('input[type="range"]');
-      const setClip = (val) => after.style.clipPath = `inset(0 ${100-val}% 0 0)`;
-      setClip(range.value);
-      range.addEventListener('input', e => setClip(e.target.value));
-    });
-
-    // Simple lightbox
-    const lb = (() => {
-      const el = document.createElement('div');
-      el.className = 'lb';
-      el.innerHTML = '<button class="close">Close</button><img alt="Expanded image">';
-      document.body.appendChild(el);
-      const img = el.querySelector('img');
-      const close = () => el.classList.remove('is-open');
-      el.addEventListener('click', (e) => { if (e.target === el || e.target.classList.contains('close')) close(); });
-      window.addEventListener('keydown', e => { if (e.key === 'Escape') close(); });
-      return { open: (src, alt) => { img.src = src; img.alt = alt || ''; el.classList.add('is-open'); } };
-    })();
-    document.querySelectorAll('[data-lb]').forEach(a => {
-      a.addEventListener('click', (e) => {
-        e.preventDefault();
-        const img = a.querySelector('img');
-        lb.open(a.getAttribute('href'), img ? img.alt : '');
+    // ===== Filter chips =====
+    const chips = document.querySelectorAll('.filter-chip');
+    const cards = document.querySelectorAll('.card[data-cat]');
+    chips.forEach(chip=>{
+      chip.addEventListener('click', () => {
+        chips.forEach(c=>c.classList.remove('is-active'));
+        chip.classList.add('is-active');
+        const f = chip.dataset.filter;
+        cards.forEach(card=>{
+          const show = (f==='all') || card.dataset.cat === f;
+          card.style.display = show ? '' : 'none';
+        });
+        // Scroll to top of grid on change (mobile nicety)
+        document.getElementById('portfolioGrid').scrollIntoView({behavior:'smooth', block:'start'});
       });
     });
+
+    // ===== Before/After slider + chips =====
+    const clamp = (v,min,max)=>Math.min(max,Math.max(min,v));
+    document.querySelectorAll('.ba').forEach(box=>{
+      const range = box.querySelector('.ba-range');
+      const knob  = box.querySelector('.knob');
+      const twist = box.querySelector('.twist');
+      const chips = box.querySelectorAll('.ba-chip');
+
+      const setPos = (pct) => {
+        const value = clamp(+pct, 0, 100);
+        box.style.setProperty('--pos', value);
+        range.value = value;
+        // update chip active state
+        const target = (value <= 50) ? 0 : 100;
+        chips.forEach(c => c.classList.toggle('active', +c.dataset.value === target));
+      };
+
+      // init
+      setPos(range.value || 50);
+
+      // drag via range
+      range.addEventListener('input', e => setPos(e.target.value));
+
+      // chips tap
+      chips.forEach(c => c.addEventListener('click', () => setPos(c.dataset.value)));
+
+      // Optional: drag anywhere on the image
+      const onPointer = (ev) => {
+        const r = box.getBoundingClientRect();
+        const pct = ((ev.clientX - r.left) / r.width) * 100;
+        setPos(pct);
+      };
+      [box, knob, twist].forEach(el=>{
+        el.addEventListener('pointerdown', (e)=>{
+          e.preventDefault();
+          onPointer(e);
+          const move = (e2)=>onPointer(e2);
+          const up   = ()=>{ window.removeEventListener('pointermove', move); window.removeEventListener('pointerup', up); };
+          window.addEventListener('pointermove', move, {passive:false});
+          window.addEventListener('pointerup', up, {once:true});
+        });
+      });
+    });
+
+    // ===== Mobile header helper (if not already in your global JS) =====
+    const header = document.querySelector('.site-header');
+    if (header){
+      const onScroll = () => header.classList.toggle('scrolled', window.scrollY > 10);
+      window.addEventListener('scroll', onScroll, {passive:true}); onScroll();
+    }
   </script>
 </body>
 </html>
