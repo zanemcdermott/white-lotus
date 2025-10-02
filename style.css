@@ -382,3 +382,71 @@ a:hover{ color: var(--accent-3); }
 .site-footer a:hover {
   text-decoration: underline;
 }
+
+/* --- Clean section look (replaces wavy SVGs) --- */
+.section {
+  position: relative;
+  padding: 64px 0;
+  background: var(--surface, #0f0d11);
+}
+
+.section--taper::before,
+.section--taper::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  width: 100%;
+  height: 56px;
+  pointer-events: none;
+  /* soft vignette that reads as a gentle curve */
+  background:
+    radial-gradient(120% 100% at 50% 0,
+      rgba(255,255,255,0.06) 0%,
+      rgba(255,255,255,0.04) 35%,
+      rgba(255,255,255,0.00) 60%);
+}
+
+.section--taper::before {
+  top: -56px;
+  transform: scaleY(-1); /* top curve */
+}
+
+.section--taper::after {
+  bottom: -56px;         /* bottom curve */
+}
+
+/* Hero gets a clean gradient—no wave */
+.hero {
+  position: relative;
+  padding: 96px 0 72px;
+  color: #fff;
+  background:
+    radial-gradient(120% 140% at 10% 0%, rgba(215,92,164,0.25) 0%, rgba(215,92,164,0) 55%),
+    radial-gradient(120% 120% at 90% 10%, rgba(123,67,151,0.22) 0%, rgba(123,67,151,0) 60%),
+    linear-gradient(180deg, #161319 0%, #0f0d11 100%);
+}
+
+/* Optional: a divider you can drop between blocks without a full section */
+.divider {
+  height: 1px;
+  background: linear-gradient(90deg, transparent, rgba(255,255,255,0.08), transparent);
+  margin: 48px 0;
+}
+
+/* Button stays on-theme with logo gradient */
+.btn {
+  display: inline-block;
+  padding: 14px 24px;
+  border-radius: 999px;
+  font-weight: 700;
+  text-decoration: none;
+  color: #fff;
+  background: linear-gradient(135deg, #9b4dca, #d75ca4);
+  box-shadow: 0 10px 24px rgba(0,0,0,0.35);
+  transition: transform .08s ease, box-shadow .2s ease, filter .2s ease;
+}
+.btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 14px 28px rgba(0,0,0,0.4);
+  filter: brightness(1.05);
+}
