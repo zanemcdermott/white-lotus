@@ -1,19 +1,135 @@
-<!DOCTYPE html>
-<html lang="en" id="top">
+<!doctype html>
+<html lang="en">
 <head>
-  <meta charset="UTF-8" />
+  <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Maintenance • White Lotus Landscaping</title>
-  <meta name="description" content="Garden maintenance by White Lotus Landscaping — mowing, hedges, weeding, mulching, clean-ups and solar panel cleaning across the Gold Coast & surrounds." />
-<!-- Favicons & App Icons (unified across site) -->
-<link rel="icon" type="image/png" sizes="32x32" href="images/favicon-32.png">
-<link rel="icon" href="images/favicon.ico">
-<link rel="apple-touch-icon" sizes="180x180" href="images/apple-touch-icon.png">
-<meta name="theme-color" content="#0a0a0a">
-<meta property="og:url" content="https://zanemcdermott.github.io/white-lotus/maintenance.html">
-<meta property="og:image" content="images/solar1.jpg">
-<link rel="preload" as="image" href="images/solar1.jpg">
-  <link rel="stylesheet" href="style.css" />
+  <title>Services — White Lotus Landscaping</title>
+  <meta name="description" content="Creative, detail-driven landscaping across the Gold Coast & surrounds — garden maintenance, paving & retaining, water features, hedges & screening, garden makeovers, custom design, and more." />
+
+  <!-- Open Graph -->
+  <meta property="og:title" content="Services — White Lotus Landscaping" />
+  <meta property="og:description" content="From regular maintenance to big transformations — explore our services and recent results." />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://zanemcdermott.github.io/white-lotus/services.html" />
+  <meta property="og:image" content="https://zanemcdermott.github.io/white-lotus/images/hero-zen.jpg" />
+
+  <!-- Icons (already in your project) -->
+  <link rel="icon" href="images/favicon-32.png" sizes="32x32">
+  <link rel="apple-touch-icon" href="images/favicon-512.png">
+
+  <link rel="stylesheet" href="style.css?v=3" />
+
+  <!-- Page-scoped CSS to enhance cards & layout without touching global styles -->
+  <style>
+    .hero-slim {
+      padding: clamp(56px, 8vw, 96px) 0 24px;
+      background: radial-gradient(1200px 400px at 50% -200px, rgba(255,255,255,.05), transparent 60%),
+                  linear-gradient(180deg, rgba(255,255,255,.04), transparent 40%);
+      border-bottom: 1px solid rgba(255,255,255,.06);
+    }
+    .hero-slim .eyebrow { opacity: .75; font-size: .9rem; letter-spacing: .06em; text-transform: uppercase; }
+    .hero-slim h1 { margin: 6px 0 10px; }
+    .hero-copy { max-width: 72ch; opacity: .85; }
+
+    .pills {
+      display: flex; flex-wrap: wrap; gap: 10px; margin-top: 18px;
+    }
+    .pill-link {
+      display:inline-flex; align-items:center; gap:.5rem;
+      padding:10px 14px; border-radius:999px;
+      background: rgba(255,255,255,.06);
+      border:1px solid rgba(255,255,255,.08);
+      text-decoration:none;
+    }
+    .pill-link:hover { background: rgba(255,255,255,.12); }
+
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(12, 1fr);
+      gap: 24px;
+    }
+    .span-12 { grid-column: span 12; }
+    .span-6  { grid-column: span 6; }
+    .span-4  { grid-column: span 4; }
+    @media (max-width: 1100px) {
+      .span-6 { grid-column: span 12; }
+      .span-4 { grid-column: span 6; }
+    }
+    @media (max-width: 700px) { .span-4 { grid-column: span 12; } }
+
+    .service-card {
+      position: relative;
+      overflow: clip;
+      border-radius: 18px;
+      background: linear-gradient(180deg, rgba(255,255,255,.06), rgba(255,255,255,.03));
+      border:1px solid rgba(255,255,255,.08);
+      box-shadow: 0 10px 40px rgba(0,0,0,.25);
+      transition: transform .15s ease, box-shadow .2s ease;
+    }
+    .service-card:hover { transform: translateY(-2px); box-shadow: 0 16px 60px rgba(0,0,0,.35); }
+
+    .service-media {
+      position: relative; aspect-ratio: 16/9; overflow: hidden;
+      background: #0f0f12;
+    }
+    .service-media img {
+      width: 100%; height: 100%; object-fit: cover; display: block;
+      filter: saturate(1.05) contrast(1.02);
+    }
+    .badge {
+      position: absolute; top: 12px; left: 12px;
+      padding: 6px 10px; border-radius: 999px;
+      background: rgba(0,0,0,.55); border:1px solid rgba(255,255,255,.12);
+      font-size: .8rem;
+    }
+
+    .service-body { padding: 18px 18px 16px; }
+    .service-body h3 { margin: 4px 0 8px; }
+    .service-body p { opacity: .9; }
+    .bullets { margin: 12px 0 8px; padding-left: 1.15rem; }
+    .bullets li { margin: 4px 0; opacity: .95; }
+
+    .card-cta {
+      display:flex; gap:10px; align-items:center; flex-wrap: wrap;
+      padding: 12px 18px 18px;
+    }
+    .btn-outline {
+      display:inline-flex; align-items:center; gap: .55rem;
+      padding:10px 14px; border-radius: 12px;
+      border:1px solid rgba(255,255,255,.24);
+      background: transparent; text-decoration:none;
+    }
+    .btn-outline:hover { background: rgba(255,255,255,.08); }
+
+    .section-pad { padding: clamp(36px, 6vw, 64px) 0; }
+
+    .process {
+      display:grid; gap: 18px;
+    }
+    .step {
+      display:grid; grid-template-columns: 48px 1fr; gap: 16px;
+      padding: 16px; border-radius: 14px;
+      border:1px solid rgba(255,255,255,.08);
+      background: linear-gradient(180deg, rgba(255,255,255,.04), rgba(255,255,255,.02));
+    }
+    .step-number {
+      width:48px; height:48px; border-radius: 12px;
+      display:grid; place-items:center;
+      font-weight: 700;
+      background: linear-gradient(180deg, #9b4d9e, #6b1c74);
+      border:1px solid rgba(255,255,255,.25);
+      box-shadow: inset 0 0 18px rgba(0,0,0,.25);
+    }
+
+    .cta-band {
+      margin-top: 8px;
+      border-radius: 20px;
+      padding: clamp(18px, 3vw, 28px);
+      background: radial-gradient(800px 280px at 20% -120px, rgba(255,255,255,.06), transparent 60%),
+                  linear-gradient(135deg, rgba(155,77,158,.45), rgba(55,15,58,.55));
+      border:1px solid rgba(255,255,255,.14);
+    }
+  </style>
 </head>
 <body>
 
@@ -30,87 +146,332 @@
         <span></span><span></span><span></span>
       </button>
 
-      <nav class="nav" aria-label="Primary">
-        <a href="index.html#services">Services</a>
+      <nav class="nav">
+        <a href="index.html">Home</a>
+        <a class="active" href="services.html">Services</a>
         <a href="portfolio.html">Portfolio</a>
         <a href="about.html">About</a>
-        <a href="index.html#contact" class="btn small">Get a quote</a>
+        <a class="btn" href="contact.html">Get a Quote</a>
       </nav>
     </div>
   </header>
 
   <!-- Hero -->
-  <section class="hero" style="min-height:52vh;">
-    <img class="hero-bg" src="images/hero-zen.jpg" alt="Clean, well-kept garden hero background">
-    <div class="hero-overlay"></div>
-    <div class="container hero-inner">
-      <h1>Garden Maintenance</h1>
-      <p class="lead">Reliable, tidy and detail-focused — from regular lawn care to seasonal clean-ups and solar panel cleaning.</p>
-      <div class="buttons">
-        <a class="btn" href="#services">What’s included</a>
-        <a class="btn ghost" href="#solar">Solar panel cleaning</a>
-      </div>
-    </div>
-  </section>
-
-  <!-- Maintenance services list -->
-  <section id="services" class="section">
+  <section class="hero-slim">
     <div class="container">
-      <h2 class="h2">What’s included</h2>
-      <p>Perfect for keeping things sharp year-round, prepping for sale/inspection, or a one-off reset:</p>
+      <div class="eyebrow">What we do</div>
+      <h1 class="h1">Design-led landscaping, built to last.</h1>
+      <p class="hero-copy">
+        From meticulous maintenance to large transformations, every project is planned with care and delivered by Travis, the owner-operator.
+      </p>
 
-      <div class="cards service-cards">
-        <article class="card"><h3>Lawn mowing &amp; edging</h3><p>Crisp edges, blow-down and tidy paths.</p></article>
-        <article class="card"><h3>Whipper snipping</h3><p>Clean lines along fences and tight spots.</p></article>
-        <article class="card"><h3>Hedge trimming</h3><p>Formal shaping or natural screening maintenance.</p></article>
-        <article class="card"><h3>Weed control</h3><p>Hand weeding and safe treatment where appropriate.</p></article>
-        <article class="card"><h3>Mulching</h3><p>Moisture retention, weed suppression and a neat finish.</p></article>
-        <article class="card"><h3>Garden clean-ups</h3><p>Green waste removal, pruning and seasonal resets.</p></article>
+      <!-- Quick jump -->
+      <div class="pills" aria-label="Quick service links">
+        <a class="pill-link" href="#maintenance">Maintenance</a>
+        <a class="pill-link" href="#paving">Paving & Retaining</a>
+        <a class="pill-link" href="#water">Ponds & Waterfalls</a>
+        <a class="pill-link" href="#makeovers">Garden Makeovers</a>
+        <a class="pill-link" href="#hedges">Hedges & Screening</a>
+        <a class="pill-link" href="#steps">Steps & Access</a>
+        <a class="pill-link" href="#design">Custom Design</a>
       </div>
-
-      <p class="mt"><a class="btn" href="index.html#contact">Book maintenance</a></p>
     </div>
   </section>
 
-  <!-- Solar panel cleaning gallery -->
-  <section id="solar" class="section alt">
+  <!-- Services grid -->
+  <section class="section section-pad">
+    <div class="container grid">
+      <!-- Maintenance -->
+      <div id="maintenance" class="span-6 service-card">
+        <div class="service-media">
+          <img src="images/maintenance-hero.jpg" alt="Neat hedges and fresh mulch after maintenance" onerror="this.src='images/hedge-after1.jpg'">
+          <span class="badge">Popular</span>
+        </div>
+        <div class="service-body">
+          <h3 class="h3">Garden Maintenance</h3>
+          <p>Reliable, tidy upkeep that keeps your garden sharp year-round or prepped for sale/inspection.</p>
+          <ul class="bullets">
+            <li>Lawn mowing &amp; edging</li>
+            <li>Whipper snipping / brush cutting</li>
+            <li>Hedge trimming &amp; shaping</li>
+            <li>Weed control &amp; mulching</li>
+            <li>Garden clean-ups &amp; seasonal refresh</li>
+            <li>Solar panel cleaning</li>
+          </ul>
+        </div>
+        <div class="card-cta">
+          <a class="btn" href="contact.html">Request a maintenance quote</a>
+          <a class="btn-outline" href="portfolio.html#maintenance">See maintenance results →</a>
+        </div>
+      </div>
+
+      <!-- Paving & Retaining -->
+      <div id="paving" class="span-6 service-card">
+        <div class="service-media">
+          <img src="images/paving1-after.jpg" alt="Fresh paved path and steps">
+          <span class="badge">Transform</span>
+        </div>
+        <div class="service-body">
+          <h3 class="h3">Paving &amp; Retaining</h3>
+          <p>Functional structure meets clean lines: paths, patios, steps and walls built for everyday life.</p>
+          <ul class="bullets">
+            <li>New paving, extensions &amp; re-lays</li>
+            <li>Stair runs and safe access routes</li>
+            <li>Retaining walls, garden edges &amp; sleepers</li>
+            <li>Drainage and sub-base remediation</li>
+          </ul>
+        </div>
+        <div class="card-cta">
+          <a class="btn" href="contact.html">Start a paving project</a>
+          <a class="btn-outline" href="portfolio.html#paving">View paving before/afters →</a>
+        </div>
+      </div>
+
+      <!-- Water features -->
+      <div id="water" class="span-6 service-card">
+        <div class="service-media">
+          <img src="images/pondless-after.jpg" alt="Pondless waterfall feature with natural rock">
+          <span class="badge">Signature</span>
+        </div>
+        <div class="service-body">
+          <h3 class="h3">Ponds &amp; Waterfalls</h3>
+          <p>Tranquil features that elevate the whole garden — from koi ponds to pondless “infinite” waterfalls.</p>
+          <ul class="bullets">
+            <li>Pond design &amp; construction (concrete or liner)</li>
+            <li>Pondless waterfalls &amp; filtration basins</li>
+            <li>Aquatic planting &amp; rock work</li>
+            <li>Maintenance &amp; water clarity help</li>
+          </ul>
+        </div>
+        <div class="card-cta">
+          <a class="btn" href="contact.html">Discuss a water feature</a>
+          <a class="btn-outline" href="portfolio.html#water">See water features →</a>
+        </div>
+      </div>
+
+      <!-- Makeovers -->
+      <div id="makeovers" class="span-6 service-card">
+        <div class="service-media">
+          <img src="images/zen-after.jpg" alt="Zen garden makeover with stone and planting">
+        </div>
+        <div class="service-body">
+          <h3 class="h3">Garden Makeovers</h3>
+          <p>Blank-slate transformations or targeted refreshes that bring cohesion, function, and calm.</p>
+          <ul class="bullets">
+            <li>Design direction &amp; plant sourcing</li>
+            <li>Mulch, rock &amp; decorative gravel</li>
+            <li>Edging, lighting &amp; irrigation add-ons</li>
+            <li>Sale-ready front yard revamps</li>
+          </ul>
+        </div>
+        <div class="card-cta">
+          <a class="btn" href="contact.html">Plan a makeover</a>
+          <a class="btn-outline" href="portfolio.html#makeovers">See makeovers →</a>
+        </div>
+      </div>
+
+      <!-- Hedges & Screening -->
+      <div id="hedges" class="span-6 service-card">
+        <div class="service-media">
+          <img src="images/hedge-after3.jpg" alt="New hedges for natural screening">
+        </div>
+        <div class="service-body">
+          <h3 class="h3">Hedges &amp; Screening</h3>
+          <p>Privacy without the hard edges — plant selection, layout, and clean, consistent maintenance.</p>
+          <ul class="bullets">
+            <li>Privacy hedges &amp; mixed screens</li>
+            <li>Formal shapes or natural softening</li>
+            <li>Soil prep &amp; drip irrigation options</li>
+            <li>Ongoing trimming service</li>
+          </ul>
+        </div>
+        <div class="card-cta">
+          <a class="btn" href="contact.html">Talk screening options</a>
+          <a class="btn-outline" href="portfolio.html#hedges">See hedge projects →</a>
+        </div>
+      </div>
+
+      <!-- Steps & Access -->
+      <div id="steps" class="span-6 service-card">
+        <div class="service-media">
+          <img src="images/steps-after.jpg" alt="New steps creating safe access beside driveway">
+        </div>
+        <div class="service-body">
+          <h3 class="h3">Steps &amp; Access</h3>
+          <p>Safe, sensible routes across grades and side yards — designed to blend with the garden.</p>
+          <ul class="bullets">
+            <li>Side-of-house access solutions</li>
+            <li>Timber sleepers, pavers, or concrete</li>
+            <li>Handy erosion &amp; drainage fixes</li>
+            <li>Lighting &amp; edging add-ons</li>
+          </ul>
+        </div>
+        <div class="card-cta">
+          <a class="btn" href="contact.html">Improve access</a>
+          <a class="btn-outline" href="portfolio.html#steps">See step builds →</a>
+        </div>
+      </div>
+
+      <!-- Custom Design -->
+      <div id="design" class="span-12 service-card">
+        <div class="service-media">
+          <img src="images/hero-zen.jpg" alt="Soft gradient background with lotus tones">
+          <span class="badge">Bespoke</span>
+        </div>
+        <div class="service-body">
+          <h3 class="h3">Custom Landscape Design</h3>
+          <p>Have a clear vision or a rough sketch? Travis will turn it into a cohesive plan and build it, end-to-end.</p>
+          <ul class="bullets">
+            <li>Concept &amp; plant palettes that suit your home</li>
+            <li>Phased builds to match budget &amp; seasons</li>
+            <li>Low-maintenance options for busy households</li>
+            <li>Aftercare advice &amp; optional upkeep</li>
+          </ul>
+        </div>
+        <div class="card-cta">
+          <a class="btn" href="contact.html">Start a custom plan</a>
+          <a class="btn-outline" href="portfolio.html">Browse the full portfolio →</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Process -->
+  <section class="section section-pad">
     <div class="container">
-      <h2 class="h2">Solar panel cleaning</h2>
-      <p>Gentle clean for better efficiency and longevity. Here are a few examples:</p>
-
-      <div class="grid thumbs">
-        <figure class="figure"><img src="images/solar1.jpg" alt="Solar panel cleaning example 1" /><figcaption>Example</figcaption></figure>
-        <figure class="figure"><img src="images/solar2.jpg" alt="Solar panel cleaning example 2" /><figcaption>Example</figcaption></figure>
-        <figure class="figure"><img src="images/solar3.jpg" alt="Solar panel cleaning example 3" /><figcaption>Example</figcaption></figure>
-        <figure class="figure"><img src="images/solar4.jpg" alt="Solar panel cleaning example 4" /><figcaption>Example</figcaption></figure>
+      <h2 class="h2">How it works</h2>
+      <div class="process">
+        <div class="step">
+          <div class="step-number">1</div>
+          <div>
+            <h3 class="h5">Quick chat &amp; photos</h3>
+            <p>Send a few photos and a short brief. Travis will reply personally with next steps.</p>
+          </div>
+        </div>
+        <div class="step">
+          <div class="step-number">2</div>
+          <div>
+            <h3 class="h5">On-site visit</h3>
+            <p>Measure, assess grades, and confirm scope, materials, and maintenance level you want.</p>
+          </div>
+        </div>
+        <div class="step">
+          <div class="step-number">3</div>
+          <div>
+            <h3 class="h5">Design &amp; quote</h3>
+            <p>Clear scope and pricing. Phased options if you’d like to stage the project.</p>
+          </div>
+        </div>
+        <div class="step">
+          <div class="step-number">4</div>
+          <div>
+            <h3 class="h5">Build &amp; handover</h3>
+            <p>Polite, tidy site work from start to finish. Guidance for care, or ongoing maintenance available.</p>
+          </div>
+        </div>
       </div>
 
-      <p class="mt"><a class="btn" href="index.html#contact">Request a solar clean</a></p>
+      <div class="cta-band" style="margin-top:24px">
+        <div class="grid" style="align-items:center">
+          <div class="span-6">
+            <h3 class="h3" style="margin:0 0 6px">Ready to start?</h3>
+            <p style="opacity:.9;margin:0">Tell us what you need and attach photos — we’ll get back to you quickly.</p>
+          </div>
+          <div class="span-6" style="text-align:right">
+            <a class="btn" href="contact.html">Request a quote</a>
+            <a class="btn-outline" href="portfolio.html" style="margin-left:8px">See recent work</a>
+          </div>
+        </div>
+      </div>
     </div>
   </section>
 
-  <!-- CTA -->
-  <section class="cta">
-    <div class="container cta-inner">
-      <h2>Need a hand keeping things tidy?</h2>
-      <p>Tell us what you need and how often — we’ll tailor a plan to your garden.</p>
-      <a class="btn" href="index.html#contact">Request a quote</a>
+  <!-- Service area -->
+  <section class="section section-pad">
+    <div class="container">
+      <h2 class="h2">Service Area</h2>
+      <p class="measure">Based on the Gold Coast and servicing surrounding suburbs. Larger projects by arrangement.</p>
     </div>
   </section>
 
   <!-- Footer -->
- <footer class="site-footer">
-  <div class="container">
-    <p>&copy; 2025 White Lotus Landscaping. All rights reserved.</p>
-    <p>
-      Website designed by 
-      <a href="https://zanemcdermott.github.io/hello-static/" target="_blank" rel="noopener noreferrer">
-        Sidekick Sites
-      </a>
-    </p>
-  </div>
-</footer>
+  <footer class="site-footer">
+    <div class="container footer-grid">
+      <div class="footer-brand">
+        <img src="images/logo-transparent.png" alt="White Lotus Landscaping" height="44"
+             onerror="this.onerror=null;this.src='images/logo.jpg';" />
+        <p class="muted">Owner-operated by Travis since 2019.</p>
+      </div>
 
-  <script src="script.js" defer></script>
+      <nav class="footer-nav">
+        <h4>Explore</h4>
+        <a href="index.html">Home</a>
+        <a href="services.html">Services</a>
+        <a href="portfolio.html">Portfolio</a>
+        <a href="about.html">About</a>
+        <a href="contact.html">Get a Quote</a>
+      </nav>
+
+      <div class="footer-meta">
+        <h4>Connect</h4>
+        <p>
+          <a href="https://www.facebook.com/share/172BXBtpYT/?mibextid=wwXIfr" target="_blank" rel="noopener">Facebook</a> ·
+          <a href="https://instagram.com/whitelotuslandscaping" target="_blank" rel="noopener">Instagram</a>
+        </p>
+        <p class="muted">ABN available on request · Fully insured</p>
+      </div>
+    </div>
+
+    <div class="container" style="padding-top:14px;border-top:1px solid rgba(255,255,255,.08);margin-top:16px">
+      <p class="muted" style="margin:0">
+        © <span id="y"></span> White Lotus Landscaping · Website design by
+        <a href="https://zanemcdermott.github.io/hello-static/" target="_blank" rel="noopener">Sidekick Sites</a>
+      </p>
+    </div>
+  </footer>
+
+  <script>
+    // header mobile toggle (reuses your global structure)
+    const toggle = document.querySelector('.nav-toggle');
+    const nav = document.querySelector('.nav');
+    if (toggle) {
+      toggle.addEventListener('click', () => {
+        const expanded = toggle.getAttribute('aria-expanded') === 'true';
+        toggle.setAttribute('aria-expanded', String(!expanded));
+        nav.classList.toggle('open');
+      });
+    }
+    document.getElementById('y').textContent = new Date().getFullYear();
+  </script>
+
+  <!-- FAQ schema for SEO -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [{
+      "@type": "Question",
+      "name": "Do you offer regular maintenance?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Yes. Fortnightly or monthly visits are common, covering mowing, edging, hedging, weed control, and general tidy-ups."
+      }
+    },{
+      "@type": "Question",
+      "name": "Which areas do you service?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Gold Coast and surrounding suburbs. Larger projects slightly beyond this area can be arranged."
+      }
+    },{
+      "@type": "Question",
+      "name": "Can you design and build?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Yes. Travis can plan planting, structure, and materials to suit your home and then build the project end-to-end."
+      }
+    }]
+  }
+  </script>
 </body>
 </html>
