@@ -113,7 +113,7 @@
       border-bottom: 1px solid rgba(255,255,255,.06);
     }
     .ba img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
-    .ba img.after { clip-path: inset(0 50% 0 0); transition: clip-path .05s linear; }
+    .ba img.after { clip-path: inset(0 0 0 50%); transition: clip-path .05s linear; }
     .ba input[type="range"] {
       -webkit-appearance: none; appearance: none;
       position: absolute; inset: 0; width: 100%; height: 100%; background: none; margin: 0;
@@ -201,8 +201,8 @@
       <!-- Paving 1 -->
       <article class="card" data-cat="paving">
         <div class="ba" aria-label="Before / After: Pavers Job 1">
-          <img src="images/paving1-before.jpg" alt="Front path area before paving" class="before" loading="lazy" />
-          <img src="images/paving1-after.jpg" alt="Front path renewed with fresh pavers" class="after" loading="lazy" />
+          <img src="images/paving1-after.jpg" alt="Front path area before paving" class="before" loading="lazy" />
+          <img src="images/paving1-before.jpg" alt="Front path renewed with fresh pavers" class="after" loading="lazy" />
           <input type="range" min="0" max="100" value="50" aria-label="Compare before and after">
           <div class="labels">
             <span class="pill">Before</span><span class="pill">After</span>
@@ -216,8 +216,8 @@
           <details class="gallery">
             <summary>View build photos</summary>
             <div class="thumb-row">
-              <a href="images/paving1-before.jpg" data-lb><img src="images/paving1-before.jpg" alt="Before — pathway" loading="lazy"></a>
-              <a href="images/paving1-after.jpg" data-lb><img src="images/paving1-after.jpg" alt="After — pathway paved" loading="lazy"></a>
+              <a href="images/paving1-after.jpg" data-lb><img src="images/paving1-before.jpg" alt="Before — pathway" loading="lazy"></a>
+              <a href="images/paving1-before.jpg" data-lb><img src="images/paving1-after.jpg" alt="After — pathway paved" loading="lazy"></a>
             </div>
           </details>
         </div>
@@ -226,8 +226,8 @@
       <!-- Paving 2 -->
       <article class="card" data-cat="paving">
         <div class="ba" aria-label="Before / After: Pavers Job 2">
-          <img src="images/paving2-before.jpg" alt="Courtyard before update" class="before" loading="lazy" />
-          <img src="images/paving2-after.jpg" alt="Courtyard refreshed with pavers" class="after" loading="lazy" />
+          <img src="images/paving2-after.jpg" alt="Courtyard before update" class="before" loading="lazy" />
+          <img src="images/paving2-before.jpg" alt="Courtyard refreshed with pavers" class="after" loading="lazy" />
           <input type="range" min="0" max="100" value="50" aria-label="Compare before and after">
           <div class="labels">
             <span class="pill">Before</span><span class="pill">After</span>
@@ -251,8 +251,8 @@
       <!-- Pondless waterfall -->
       <article class="card" data-cat="water">
         <div class="ba" aria-label="Before / After: Pondless Waterfall">
-          <img src="images/pondless-before.jpg" alt="Garden corner before water feature" class="before" loading="lazy" />
-          <img src="images/pondless-after.jpg" alt="Pondless waterfall feature installed" class="after" loading="lazy" />
+          <img src="images/pondless-after.jpg" alt="Garden corner before water feature" class="before" loading="lazy" />
+          <img src="images/pondless-before.jpg" alt="Pondless waterfall feature installed" class="after" loading="lazy" />
           <input type="range" min="0" max="100" value="54" aria-label="Compare before and after">
           <div class="labels"><span class="pill">Before</span><span class="pill">After</span></div>
         </div>
@@ -264,9 +264,9 @@
           <details class="gallery">
             <summary>View build photos</summary>
             <div class="thumb-row">
-              <a href="images/pondless-before.jpg" data-lb><img src="images/pondless-before.jpg" alt="Before" loading="lazy"></a>
+              <a href="images/pondless-after.jpg" data-lb><img src="images/pondless-before.jpg" alt="Before" loading="lazy"></a>
               <a href="images/pondless-wip.jpg" data-lb><img src="images/pondless-wip.jpg" alt="During build" loading="lazy"></a>
-              <a href="images/pondless-after.jpg" data-lb><img src="images/pondless-after.jpg" alt="After" loading="lazy"></a>
+              <a href="images/pondless-before.jpg" data-lb><img src="images/pondless-after.jpg" alt="After" loading="lazy"></a>
             </div>
           </details>
         </div>
@@ -275,8 +275,8 @@
       <!-- Concrete pond -->
       <article class="card" data-cat="water">
         <div class="ba" aria-label="Before / After: Concrete Pond">
-          <img src="images/concretepond-before.jpg" alt="Yard with dug hole prior to pond" class="before" loading="lazy" />
-          <img src="images/concretepond-after.jpg" alt="Finished concrete pond decorated with rocks" class="after" loading="lazy" />
+          <img src="images/concretepond-after.jpg" alt="Yard with dug hole prior to pond" class="before" loading="lazy" />
+          <img src="images/concretepond-before.jpg" alt="Finished concrete pond decorated with rocks" class="after" loading="lazy" />
           <input type="range" min="0" max="100" value="50" aria-label="Compare before and after">
           <div class="labels"><span class="pill">Before</span><span class="pill">After</span></div>
         </div>
@@ -288,10 +288,10 @@
           <details class="gallery">
             <summary>View build photos</summary>
             <div class="thumb-row">
-              <a href="images/concretepond-before.jpg" data-lb><img src="images/concretepond-before.jpg" alt="Before" loading="lazy"></a>
+              <a href="images/concretepond-after.jpg" data-lb><img src="images/concretepond-before.jpg" alt="Before" loading="lazy"></a>
               <a href="images/concretepond-wip1.jpg" data-lb><img src="images/concretepond-wip1.jpg" alt="During — concreting" loading="lazy"></a>
               <a href="images/concretepond-wip2.jpg" data-lb><img src="images/concretepond-wip2.jpg" alt="During — filling" loading="lazy"></a>
-              <a href="images/concretepond-after.jpg" data-lb><img src="images/concretepond-after.jpg" alt="After" loading="lazy"></a>
+              <a href="images/concretepond-before.jpg" data-lb><img src="images/concretepond-after.jpg" alt="After" loading="lazy"></a>
             </div>
           </details>
         </div>
@@ -300,8 +300,8 @@
       <!-- Zen garden -->
       <article class="card" data-cat="makeover">
         <div class="ba" aria-label="Before / After: Zen Garden">
-          <img src="images/zen-before.jpg" alt="Area before zen garden makeover" class="before" loading="lazy" />
-          <img src="images/zen-after.jpg" alt="Completed zen garden with stones and plants" class="after" loading="lazy" />
+          <img src="images/zen-after.jpg" alt="Area before zen garden makeover" class="before" loading="lazy" />
+          <img src="images/zen-before.jpg" alt="Completed zen garden with stones and plants" class="after" loading="lazy" />
           <input type="range" min="0" max="100" value="50" aria-label="Compare before and after">
           <div class="labels"><span class="pill">Before</span><span class="pill">After</span></div>
         </div>
@@ -315,8 +315,8 @@
       <!-- Bee garden -->
       <article class="card" data-cat="makeover">
         <div class="ba" aria-label="Before / After: Bee Garden">
-          <img src="images/bee-before.jpg" alt="Yard before bee garden build" class="before" loading="lazy" />
-          <img src="images/bee-after1.jpg" alt="Bee garden with flowering plants" class="after" loading="lazy" />
+          <img src="images/bee-after1.jpg" alt="Yard before bee garden build" class="before" loading="lazy" />
+          <img src="images/bee-before.jpg" alt="Bee garden with flowering plants" class="after" loading="lazy" />
           <input type="range" min="0" max="100" value="52" aria-label="Compare before and after">
           <div class="labels"><span class="pill">Before</span><span class="pill">After</span></div>
         </div>
@@ -342,8 +342,8 @@
       <!-- Hedges & screening -->
       <article class="card" data-cat="hedges">
         <div class="ba" aria-label="Before / After: Hedging">
-          <img src="images/hedge-before.jpg" alt="Front yard before hedges" class="before" loading="lazy" />
-          <img src="images/hedge-after1.jpg" alt="Front yard with new hedge screening" class="after" loading="lazy" />
+          <img src="images/hedge-after1.jpg" alt="Front yard before hedges" class="before" loading="lazy" />
+          <img src="images/hedge-before.jpg" alt="Front yard with new hedge screening" class="after" loading="lazy" />
           <input type="range" min="0" max="100" value="50" aria-label="Compare before and after">
           <div class="labels"><span class="pill">Before</span><span class="pill">After</span></div>
         </div>
@@ -365,8 +365,8 @@
       <!-- Side access steps & sleepers -->
       <article class="card" data-cat="steps">
         <div class="ba" aria-label="Before / After: Side Access Steps">
-          <img src="images/sidestep-before.jpg" alt="Side of house with natural gradient" class="before" loading="lazy" />
-          <img src="images/sidestep-after1.jpg" alt="Timber steps with sleepers under deck" class="after" loading="lazy" />
+          <img src="images/sidestep-after1.jpg" alt="Side of house with natural gradient" class="before" loading="lazy" />
+          <img src="images/sidestep-before.jpg" alt="Timber steps with sleepers under deck" class="after" loading="lazy" />
           <input type="range" min="0" max="100" value="50" aria-label="Compare before and after">
           <div class="labels"><span class="pill">Before</span><span class="pill">After</span></div>
         </div>
@@ -390,8 +390,8 @@
       <!-- Driveway side steps -->
       <article class="card" data-cat="steps">
         <div class="ba" aria-label="Before / After: Steps near Driveway">
-          <img src="images/steps-before.jpg" alt="Space before steps were built" class="before" loading="lazy" />
-          <img src="images/steps-after.jpg" alt="Completed steps next to driveway" class="after" loading="lazy" />
+          <img src="images/steps-after.jpg" alt="Space before steps were built" class="before" loading="lazy" />
+          <img src="images/steps-before.jpg" alt="Completed steps next to driveway" class="after" loading="lazy" />
           <input type="range" min="0" max="100" value="50" aria-label="Compare before and after">
           <div class="labels"><span class="pill">Before</span><span class="pill">After</span></div>
         </div>
