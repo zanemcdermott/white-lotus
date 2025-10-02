@@ -451,3 +451,15 @@ a:hover{ color: var(--accent-3); }
   filter: brightness(1.05);
 }
 
+/* Comparison slider: improve touch hit-area */
+.ba-slider { position: relative; touch-action: none; }  /* disables browser panning while dragging */
+.ba-handle {
+  width: 36px; height: 36px; border-radius: 999px;
+  border: 2px solid rgba(255,255,255,.85);
+  background: rgba(0,0,0,.45);
+  position: absolute; top: 50%; transform: translate(-50%, -50%);
+  box-shadow: 0 6px 18px rgba(0,0,0,.35);
+}
+@media (max-width: 640px) {
+  .ba-handle { width: 44px; height: 44px; } /* bigger thumb on phones */
+}

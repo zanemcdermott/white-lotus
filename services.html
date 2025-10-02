@@ -1,192 +1,243 @@
-<!DOCTYPE html>
-<html lang="en">
+<!doctype html>
+<html lang="en" id="top">
 <head>
-  <meta charset="UTF-8" />
+  <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Services • White Lotus Landscaping</title>
-  <meta name="description" content="Landscaping services by White Lotus Landscaping — mowing, hedges, garden cleanups, paving, ponds and waterfalls, custom design, and more." />
-<!-- Favicons & App Icons (unified across site) -->
-<link rel="icon" type="image/png" sizes="32x32" href="images/favicon-32.png">
-<link rel="icon" href="images/favicon.ico">
-<link rel="apple-touch-icon" sizes="180x180" href="images/apple-touch-icon.png">
-<meta name="theme-color" content="#0a0a0a">
+  <title>Services — White Lotus Landscaping</title>
+  <meta name="description" content="Creative, detail-driven landscaping across the Gold Coast — garden maintenance, paving & retaining, ponds & waterfalls, garden makeovers, and custom landscape design." />
 
-  <link rel="icon" href="images/logo.jpg" />
+  <!-- Open Graph -->
+  <meta property="og:title" content="Services — White Lotus Landscaping" />
+  <meta property="og:description" content="Garden maintenance, paving & retaining, ponds & waterfalls, garden makeovers, and custom landscape design." />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://zanemcdermott.github.io/white-lotus/services.html" />
+  <meta property="og:image" content="images/hero-zen.jpg" />
+
+  <link rel="icon" href="images/favicon-32.png" sizes="32x32">
+  <link rel="apple-touch-icon" href="images/favicon-512.png">
+  <link rel="stylesheet" href="style.css?v=2" />
 </head>
+
 <body>
-  <!-- ===== Header / Nav ===== -->
+  <!-- Header -->
   <header class="site-header">
     <div class="container header-inner">
-      <a href="index.html" class="brand">
-        <img src="images/logo-transparent.png" alt="White Lotus Landscaping logo" width="40" height="40" />
-        <span>White Lotus Landscaping</span>
+      <a class="brand" href="index.html" aria-label="White Lotus Landscaping">
+        <img src="images/logo-transparent.png" alt="White Lotus Landscaping logo" height="40"
+             onerror="this.onerror=null;this.src='images/logo.jpg';" />
+        <span class="brand-text">White Lotus Landscaping</span>
       </a>
-      <nav class="nav">
-        <button class="nav-toggle" aria-label="Toggle menu" aria-expanded="false">
-          <span class="bar"></span><span class="bar"></span><span class="bar"></span>
-        </button>
-        <ul>
-          <li><a href="index.html#home">Home</a></li>
-          <li><a href="services.html" class="active">Services</a></li>
-          <li><a href="portfolio.html">Portfolio</a></li>
-          <li><a href="index.html#about">About</a></li>
-          <li><a class="btn" href="index.html#contact">Get a Quote</a></li>
-        </ul>
+
+      <button class="nav-toggle" aria-label="Open menu" aria-expanded="false"></button>
+      <nav class="site-nav" data-collapsed="true">
+        <a href="index.html">Home</a>
+        <a class="active" href="services.html">Services</a>
+        <a href="portfolio.html">Portfolio</a>
+        <a href="about.html">About</a>
+        <a class="btn btn--sm" href="contact.html">Get a Quote</a>
       </nav>
     </div>
   </header>
 
-  <!-- ===== Hero ===== -->
-  <section class="hero hero-slim" style="--hero:url('images/hero-zen.jpg')">
+  <!-- Hero -->
+  <section class="hero section section--tight">
     <div class="container">
-      <h1 class="xl">What We Do</h1>
-      <p>Creative, detail-driven landscaping across the region — from regular maintenance to one-off transformations.</p>
+      <h1 class="h1">What We Do</h1>
+      <p class="lead">Creative, detail-driven landscaping across the region — from regular maintenance to one-off showstopper transformations.</p>
+
       <div class="pill-row">
-        <a href="#maintenance" class="pill">Maintenance</a>
-        <a href="#makeovers" class="pill">Garden Makeovers</a>
-        <a href="#paving" class="pill">Paving &amp; Retaining</a>
-        <a href="#water" class="pill">Ponds &amp; Waterfalls</a>
-        <a href="#design" class="pill">Custom Design</a>
+        <a class="pill" href="#maintenance">Maintenance</a>
+        <a class="pill" href="#makeovers">Garden Makeovers</a>
+        <a class="pill" href="#paving">Paving &amp; Retaining</a>
+        <a class="pill" href="#water">Ponds &amp; Waterfalls</a>
+        <a class="pill" href="#custom">Custom Design</a>
       </div>
     </div>
   </section>
 
-  <!-- ===== Maintenance ===== -->
-  <section id="maintenance" class="section">
+  <!-- Services Grid -->
+  <section class="section">
+    <div class="container grid grid--cards grid--3">
+
+      <!-- Maintenance -->
+      <article id="maintenance" class="card service-card">
+        <img class="card-cover" src="images/maintenance-hero.jpg" alt="Garden maintenance on site"
+             onerror="this.onerror=null;this.src='images/hedge-after1.jpg';">
+        <div class="card-body">
+          <h2 class="h3">Garden Maintenance</h2>
+          <p>Reliable, tidy, and respectful of your property. Perfect for keeping things sharp year-round or prepping for sale/inspection.</p>
+
+          <details class="service-details">
+            <summary>What’s included</summary>
+            <ul class="list">
+              <li>Lawn mowing &amp; edging</li>
+              <li>Whipper snipping</li>
+              <li>Hedge trimming / screening</li>
+              <li>Weed control &amp; garden clean-ups</li>
+              <li>Mulching &amp; soil conditioning</li>
+              <li>Solar panel cleaning (optional add-on)</li>
+            </ul>
+          </details>
+
+          <div class="card-actions">
+            <a class="btn btn--ghost" href="portfolio.html#maintenance">See examples</a>
+            <a class="btn" href="contact.html">Book maintenance</a>
+          </div>
+        </div>
+      </article>
+
+      <!-- Garden Makeovers -->
+      <article id="makeovers" class="card service-card">
+        <img class="card-cover" src="images/zen-after.jpg" alt="Finished garden makeover">
+        <div class="card-body">
+          <h2 class="h3">Garden Makeovers</h2>
+          <p>From tired to tranquil. Thoughtful planting, smart screening, and clean lines to refresh courtyards and yards of any size.</p>
+
+          <details class="service-details">
+            <summary>Typical scope</summary>
+            <ul class="list">
+              <li>Design consultation &amp; plant palette selection</li>
+              <li>Soil prep, mulching, irrigation adjustments</li>
+              <li>Feature areas (steppers, pebbles, sleepers)</li>
+              <li>Low-maintenance options available</li>
+            </ul>
+          </details>
+
+          <div class="card-actions">
+            <a class="btn btn--ghost" href="portfolio.html#makeovers">See examples</a>
+            <a class="btn" href="contact.html">Start your makeover</a>
+          </div>
+        </div>
+      </article>
+
+      <!-- Paving & Retaining -->
+      <article id="paving" class="card service-card">
+        <img class="card-cover" src="images/paving1-after.jpg" alt="New paving with steps">
+        <div class="card-body">
+          <h2 class="h3">Paving &amp; Retaining</h2>
+          <p>Durable surfaces and tidy levels — from paths and patios to steps and retaining solutions that look great and last.</p>
+
+          <details class="service-details">
+            <summary>We handle</summary>
+            <ul class="list">
+              <li>Paver paths, courtyards &amp; drive-adjacent steps</li>
+              <li>Retaining walls &amp; garden edging</li>
+              <li>Concrete pads/bases as required</li>
+              <li>Drainage considerations &amp; falls</li>
+            </ul>
+          </details>
+
+          <div class="card-actions">
+            <a class="btn btn--ghost" href="portfolio.html#paving">See examples</a>
+            <a class="btn" href="contact.html">Price my paving</a>
+          </div>
+        </div>
+      </article>
+
+      <!-- Ponds & Waterfalls -->
+      <article id="water" class="card service-card">
+        <img class="card-cover" src="images/pondless-after.jpg" alt="Pondless waterfall feature">
+        <div class="card-body">
+          <h2 class="h3">Ponds &amp; Waterfalls</h2>
+          <p>From pondless cascades to full koi ponds — peaceful water features that anchor your garden and attract wildlife.</p>
+
+          <details class="service-details">
+            <summary>Options</summary>
+            <ul class="list">
+              <li>Pondless “infinite” waterfalls</li>
+              <li>Concrete or liner ponds</li>
+              <li>Filtration &amp; low-maintenance setups</li>
+              <li>Rockwork, lighting &amp; planting</li>
+            </ul>
+          </details>
+
+          <div class="card-actions">
+            <a class="btn btn--ghost" href="portfolio.html#water">See examples</a>
+            <a class="btn" href="contact.html">Discuss a water feature</a>
+          </div>
+        </div>
+      </article>
+
+      <!-- Custom Design -->
+      <article id="custom" class="card service-card">
+        <img class="card-cover" src="images/hero-zen.jpg" alt="Landscape concept vibe">
+        <div class="card-body">
+          <h2 class="h3">Custom Landscape Design</h2>
+          <p>One-on-one with Travis to shape a space that matches your lifestyle — practical, beautiful, and easy to maintain.</p>
+
+          <details class="service-details">
+            <summary>How it works</summary>
+            <ul class="list">
+              <li>Site visit &amp; vision session</li>
+              <li>Concept &amp; scope outline</li>
+              <li>Itemised estimate with options</li>
+              <li>Build &amp; handover with upkeep guidance</li>
+            </ul>
+          </details>
+
+          <div class="card-actions">
+            <a class="btn btn--ghost" href="portfolio.html">See our work</a>
+            <a class="btn" href="contact.html">Plan my project</a>
+          </div>
+        </div>
+      </article>
+
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="cta section">
     <div class="container">
-      <h2>Garden Maintenance</h2>
-      <p>Reliable, tidy, and respectful of your property. Perfect for keeping things sharp year-round or prepping for sale/inspection.</p>
-      <div class="grid cards">
-        <article class="card">
-          <h3>Lawn Mowing &amp; Edging</h3>
-          <p>Regular or once-off mowing with crisp edges and blow-down.</p>
-        </article>
-        <article class="card">
-          <h3>Whipper Snipping</h3>
-          <p>Clean edges along fences, paths, and tight areas.</p>
-        </article>
-        <article class="card">
-          <h3>Hedge Trimming</h3>
-          <p>Formal shaping or natural screening maintenance.</p>
-        </article>
-        <article class="card">
-          <h3>Weed Control</h3>
-          <p>Garden-bed hand weeding and safe treatment where appropriate.</p>
-        </article>
-        <article class="card">
-          <h3>Mulching</h3>
-          <p>Fresh mulch to retain moisture, suppress weeds, and finish the look.</p>
-        </article>
-        <article class="card">
-          <h3>Garden Clean-ups</h3>
-          <p>Green waste removal, pruning, and seasonal resets.</p>
-        </article>
-        <article class="card">
-          <h3>Solar Panel Cleaning</h3>
-          <p>Gentle clean for better efficiency — <a href="portfolio.html#maintenance">see examples</a>.</p>
-        </article>
-      </div>
-      <p class="mt"><a class="btn" href="index.html#contact">Book Maintenance</a></p>
+      <h2 class="h2">Ready to transform your outdoors?</h2>
+      <p class="lead">Send a few photos and a short brief — Travis will get back to you to discuss options and timing.</p>
+      <a class="btn btn--lg" href="contact.html">Request a quote</a>
     </div>
   </section>
 
-  <!-- ===== Makeovers ===== -->
-  <section id="makeovers" class="section alt">
-    <div class="container">
-      <h2>Garden Makeovers</h2>
-      <p>Transform tired spaces into functional, beautiful outdoor areas tailored to how you live.</p>
-      <ul class="feature-list">
-        <li>New garden beds, plant selection &amp; planting</li>
-        <li>Timber sleepers, edging, and gravel solutions</li>
-        <li>Screening plants for privacy</li>
-        <li>Painting &amp; tidying to unify the space</li>
-      </ul>
-      <p class="muted">Browse recent transformations in the <a href="portfolio.html#makeovers">Makeovers gallery</a>.</p>
-      <p><a class="btn" href="index.html#contact">Start a Makeover</a></p>
-    </div>
-  </section>
-
-  <!-- ===== Paving & Retaining ===== -->
-  <section id="paving" class="section">
-    <div class="container">
-      <h2>Paving &amp; Retaining</h2>
-      <p>From practical paths to statement patios — installed on sound bases for longevity.</p>
-      <div class="grid cards">
-        <article class="card">
-          <h3>Paver Installation</h3>
-          <p>Patios, paths, and entries with patterns to suit your home.</p>
-        </article>
-        <article class="card">
-          <h3>Retaining &amp; Garden Edging</h3>
-          <p>Timber sleepers and stone solutions to manage levels cleanly.</p>
-        </article>
-        <article class="card">
-          <h3>Access &amp; Steps</h3>
-          <p>Safe, durable steps for gradients and driveways.</p>
-        </article>
-      </div>
-      <p class="muted">See <a href="portfolio.html#paving">Paving projects</a> and <a href="portfolio.html#access">Steps &amp; access</a>.</p>
-      <p><a class="btn" href="index.html#contact">Request Paving Quote</a></p>
-    </div>
-  </section>
-
-  <!-- ===== Water Features ===== -->
-  <section id="water" class="section alt">
-    <div class="container">
-      <h2>Ponds &amp; Waterfalls</h2>
-      <p>Custom water features — from serene koi-inspired ponds to low-maintenance pondless waterfalls.</p>
-      <ul class="feature-list">
-        <li>Concrete &amp; lined ponds</li>
-        <li>Pondless “infinite” waterfalls</li>
-        <li>Natural stone selection &amp; placement</li>
-        <li>Pump/filtration setup &amp; commissioning</li>
-      </ul>
-      <p class="muted">Explore the <a href="portfolio.html#water">Water features gallery</a>.</p>
-      <p><a class="btn" href="index.html#contact">Discuss a Water Feature</a></p>
-    </div>
-  </section>
-
-  <!-- ===== Custom Design ===== -->
-  <section id="design" class="section">
-    <div class="container">
-      <h2>Custom Landscape Design</h2>
-      <p>Collaborative design that blends structure, texture, and flow — guided by your lifestyle and the site’s natural character.</p>
-      <ul class="feature-list">
-        <li>On-site walkthrough &amp; concepting</li>
-        <li>Plant palette &amp; hardscape recommendations</li>
-        <li>Phased build plans to suit budget &amp; timing</li>
-      </ul>
-      <p><a class="btn" href="index.html#contact">Book a Design Consult</a></p>
-    </div>
-  </section>
-
-  <!-- ===== CTA ===== -->
-  <section class="section cta">
-    <div class="container center">
-      <h2>Ready to get started?</h2>
-      <p>Send your ideas (and photos if you have them) — you’ll hear back with timing and a tailored quote.</p>
-      <a href="index.html#contact" class="btn">Request a Quote</a>
-    </div>
-  </section>
-
-  <!-- ===== Footer ===== -->
+  <!-- Footer -->
   <footer class="site-footer">
     <div class="container footer-inner">
-      <div class="footer-brand">
-        <img src="images/logo-transparent.png" alt="White Lotus Landscaping logo" width="44" height="44" />
-        <p>&copy; <span data-year></span> White Lotus Landscaping. All rights reserved.</p>
+      <div class="foot-brand">
+        <img src="images/logo-transparent.png" alt="" height="36"
+             onerror="this.onerror=null;this.src='images/logo.jpg';" />
+        <strong>White Lotus Landscaping</strong>
+        <p>Gold Coast &amp; surrounds • Est. 2019</p>
+        <div class="social">
+          <a href="https://www.facebook.com/share/172BXBtpYT/?mibextid=wwXIfr" aria-label="Facebook" target="_blank" rel="noopener">Facebook</a>
+          <a href="https://instagram.com/whitelotuslandscaping" aria-label="Instagram" target="_blank" rel="noopener">Instagram</a>
+        </div>
       </div>
-      <div class="footer-links">
-        <a href="https://www.facebook.com/share/172BXBtpYT/?mibextid=wwXIfr" target="_blank" rel="noopener">Facebook</a>
-        <a href="https://instagram.com/whitelotuslandscaping" target="_blank" rel="noopener">Instagram</a>
+
+      <nav class="foot-nav">
+        <a href="services.html">Services</a>
         <a href="portfolio.html">Portfolio</a>
+        <a href="about.html">About</a>
+        <a href="contact.html">Get a Quote</a>
+      </nav>
+
+      <div class="foot-legal">
+        <p>&copy; <span id="y"></span> White Lotus Landscaping. All rights reserved.</p>
+        <p class="credit">Website designed by
+          <a href="https://zanemcdermott.github.io/hello-static/" target="_blank" rel="noopener">Sidekick Sites</a>
+        </p>
       </div>
-      <div class="footer-credit">
-     <p>Website designed by <a href="https://zanemcdermott.github.io/hello-static/" target="_blank" rel="noopener noreferrer">Sidekick Sites</a></p>
     </div>
   </footer>
 
-  <a href="#top" class="to-top" aria-label="Back to top">↑</a>
-  <script src="script.js" defer></script>
+  <script>
+    // current year
+    document.getElementById('y').textContent = new Date().getFullYear();
+
+    // simple mobile menu toggle (works with our existing CSS)
+    const btn = document.querySelector('.nav-toggle');
+    const nav = document.querySelector('.site-nav');
+    if (btn && nav) {
+      btn.addEventListener('click', () => {
+        const c = nav.getAttribute('data-collapsed') === 'true';
+        nav.setAttribute('data-collapsed', c ? 'false' : 'true');
+        btn.setAttribute('aria-expanded', c ? 'true' : 'false');
+      });
+    }
+  </script>
 </body>
 </html>

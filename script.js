@@ -146,4 +146,6 @@ document.addEventListener("DOMContentLoaded", () => {
   /* ---------- Footer year ---------- */
   const yearEl = $("[data-year]");
   if (yearEl) yearEl.textContent = new Date().getFullYear();
+
+
 });
