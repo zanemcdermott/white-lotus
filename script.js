@@ -158,29 +158,28 @@ if (header){
   onScroll();
 }
 
-// Keep your current range/--pos code as-is.
-// Add this to enable tap-to-switch:
-
 document.querySelectorAll('.ba').forEach(box=>{
   const range = box.querySelector('.ba-range');
   const chips = box.querySelectorAll('.ba-chip');
   if (!range || !chips.length) return;
-  const setPos = (pct)=>{ range.value=pct; range.dispatchEvent(new Event('input',{bubbles:true})); };
-  chips.forEach(c=>c.addEventListener('click',()=>{ setPos(c.dataset.value); chips.forEach(x=>x.classList.toggle('active',x===c)); }));
-  const init = Number(range.value||50); chips.forEach(c=>c.classList.toggle('active', Number(c.dataset.value)===(init<=50?0:100)));
-});
-  
 
-  chips.forEach(chip => {
-    chip.addEventListener('click', () => {
-      setPos(chip.dataset.value);
-      chips.forEach(c => c.classList.toggle('active', c === chip));
+  const setPos = (pct)=>{
+    range.value = pct;
+    range.dispatchEvent(new Event('input', { bubbles: true }));
+  };
+
+  chips.forEach(c=>{
+    c.addEventListener('click', ()=>{
+      setPos(c.dataset.value);
+      chips.forEach(x=>x.classList.toggle('active', x===c));
     });
   });
 
-  // Initialise the “active” state based on current range
-  const initPct = Number(range.value || 50);
-  const pick = initPct <= 50 ? 0 : 100;
-  chips.forEach(c => c.classList.toggle('active', Number(c.dataset.value) === pick));
+  const init = Number(range.value || 50);
+  chips.forEach(c=>c.classList.toggle(
+    'active',
+    Number(c.dataset.value) === (init <= 50 ? 0 : 100)
+  ));
 });
+
 

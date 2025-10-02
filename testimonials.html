@@ -54,23 +54,33 @@
 </head>
 <body>
   <!-- Header -->
-  <header class="header">
-    <div class="container">
-      <a class="logo" href="index.html">
-        <img src="images/logo-transparent.png" alt="White Lotus Landscaping logo" height="44" />
-      </a>
-      <nav class="nav">
-        <a href="index.html">Home</a>
-        <a href="about.html">About</a>
-        <a href="garden-makeovers.html">Makeovers</a>
-        <a href="water-features.html">Water Features</a>
-        <a href="paving-and-steps.html">Paving & Steps</a>
-        <a href="maintenance.html">Maintenance</a>
-        <a class="active" href="testimonials.html">Reviews</a>
-        <a class="cta" href="index.html#contact">Get a Quote</a>
-      </nav>
-    </div>
-  </header>
+  <header class="site-header">
+  <div class="container header-inner">
+    <button class="nav-toggle" aria-label="Open menu" aria-expanded="false">
+      <span></span>
+    </button>
+
+    <a class="brand" href="index.html" aria-label="White Lotus Landscaping">
+      <img src="images/logo-transparent.png" alt="White Lotus Landscaping logo" height="36"
+           onerror="this.onerror=null;this.src='images/logo.jpg';" />
+      <span class="brand-text">White Lotus Landscaping</span>
+    </a>
+
+    <a class="btn header-cta" href="contact.html">Get a Quote</a>
+  </div>
+
+  <nav class="nav">
+    <a href="index.html">Home</a>
+    <a href="services.html">Services</a>
+    <a href="portfolio.html">Portfolio</a>
+    <a href="about.html">About</a>
+  </nav>
+</header>
+
+<a href="https://www.facebook.com/share/172BXBtpYT/?mibextid=wwXIfr" target="_blank" rel="noopener">Facebook</a>
+<a href="https://instagram.com/whitelotuslandscaping" target="_blank" rel="noopener">Instagram</a>
+<a href="https://zanemcdermott.github.io/hello-static/" target="_blank" rel="noopener">Sidekick Sites</a>
+
 
   <!-- Hero -->
   <section class="hero section">
@@ -160,23 +170,31 @@ Travis did an amazing job with our front garden. Great attention to detail and v
   </section>
 
   <!-- Footer -->
-  <footer class="footer">
-    <div class="container">
-      <div class="footer-grid">
-        <div>
-          <img src="images/logo-transparent.png" alt="" height="38" />
-          <p>White Lotus Landscaping • Est. 2019</p>
+   <footer class="site-footer">
+    <div class="container footer-inner">
+      <div class="foot-brand">
+        <img src="images/logo-transparent.png" alt="" height="36"
+             onerror="this.onerror=null;this.src='images/logo.jpg';" />
+        <strong>White Lotus Landscaping</strong>
+        <p>Gold Coast &amp; surrounds • Est. 2019</p>
+        <div class="social">
+          <a href="https://www.facebook.com/share/172BXBtpYT/?mibextid=wwXIfr" aria-label="Facebook" target="_blank" rel="noopener">Facebook</a>
+          <a href="https://instagram.com/whitelotuslandscaping" aria-label="Instagram" target="_blank" rel="noopener">Instagram</a>
         </div>
-        <div>
-          <p><strong>Follow</strong></p>
-          <p>
-            <a href="https://www.facebook.com/share/172BXBtpYT/?mibextid=wwXIfr" target="_blank" rel="noopener">Facebook</a> ·
-            <a href="https://instagram.com/whitelotuslandscaping" target="_blank" rel="noopener">Instagram</a>
-          </p>
-        </div>
-        <div class="credit">
-          <p>Website designed by <a href="https://zanemcdermott.github.io/hello-static/" target="_blank" rel="noopener noreferrer"></a></p>
-        </div>
+      </div>
+
+      <nav class="foot-nav">
+        <a href="services.html">Services</a>
+        <a href="portfolio.html">Portfolio</a>
+        <a href="about.html">About</a>
+        <a href="contact.html">Get a Quote</a>
+      </nav>
+
+      <div class="foot-legal">
+        <p>&copy; <span id="y"></span> White Lotus Landscaping. All rights reserved.</p>
+        <p class="credit">Website designed by
+          <a href="https://zanemcdermott.github.io/hello-static/" target="_blank" rel="noopener">Sidekick Sites</a>
+        </p>
       </div>
     </div>
   </footer>
