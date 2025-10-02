@@ -103,6 +103,72 @@ a:hover{ color: var(--accent-3); }
   background: rgba(11,10,12,.6);
   border-bottom: 1px solid rgba(255,255,255,.06);
   backdrop-filter: blur(10px);
+
+  /* ===== Header base ===== */
+.site-header {
+  position: sticky; top: 0; z-index: 1000;
+  background: #0d0b11; /* matches your dark theme */
+  border-bottom: 1px solid rgba(255,255,255,.06);
+}
+.header-inner {
+  display: flex; align-items: center; justify-content: space-between;
+  gap: 12px; padding: .75rem 0;
+}
+.brand { display: inline-flex; align-items: center; gap: .6rem; text-decoration: none; }
+.brand img { height: 36px; width: auto; display: block; }
+.brand-text { font-weight: 700; letter-spacing: .2px; }
+
+/* ===== Nav toggle (hamburger) ===== */
+.nav-toggle {
+  width: 42px; height: 42px; border-radius: 10px;
+  border: 1px solid rgba(255,255,255,.18);
+  background: rgba(255,255,255,.06);
+  position: relative;
+}
+.nav-toggle::before, .nav-toggle::after, .nav-toggle span {
+  content: ""; position: absolute; left: 10px; right: 10px; height: 2px;
+  background: #fff; border-radius: 2px; transition: transform .25s ease, opacity .2s;
+}
+.nav-toggle span { top: 20px; }
+.nav-toggle::before { top: 14px; }
+.nav-toggle::after { top: 26px; }
+
+/* Turn into an “X” when expanded */
+.nav-toggle[aria-expanded="true"]::before { transform: translateY(6px) rotate(45deg); }
+.nav-toggle[aria-expanded="true"]::after  { transform: translateY(-6px) rotate(-45deg); }
+.nav-toggle[aria-expanded="true"] span    { opacity: 0; }
+
+/* ===== Mobile nav (collapsed) ===== */
+.site-nav {
+  position: absolute; left: 0; right: 0; top: 100%;
+  background: #121018; border-bottom: 1px solid rgba(255,255,255,.06);
+  display: grid; gap: .25rem; padding: 0 1rem 1rem; transform-origin: top;
+  transform: scaleY(0); opacity: 0; pointer-events: none; transition: transform .2s ease, opacity .2s;
+}
+.site-nav a { padding: .9rem .75rem; border-radius: 10px; }
+.site-nav .btn { justify-self: start; }
+
+/* Shown state */
+.site-nav[data-collapsed="false"] {
+  transform: scaleY(1); opacity: 1; pointer-events: auto;
+}
+
+/* ===== Larger screens ===== */
+@media (min-width: 880px) {
+  .nav-toggle { display: none; }
+  .site-nav {
+    position: static; transform: none; opacity: 1; pointer-events: auto;
+    background: transparent; border: 0; padding: 0;
+    display: flex; align-items: center; gap: 1rem;
+  }
+  .site-nav a { padding: .5rem .75rem; }
+}
+
+/* ===== Very small screens: hide brand text to keep header tidy ===== */
+@media (max-width: 380px) {
+  .brand-text { display: none; }
+}
+
 }
 .header-inner{
   display:flex; align-items:center; justify-content:space-between;
@@ -463,3 +529,17 @@ a:hover{ color: var(--accent-3); }
 @media (max-width: 640px) {
   .ba-handle { width: 44px; height: 44px; } /* bigger thumb on phones */
 }
+
+/* Make <details> look like a static section (always open) */
+.service-details[open] > summary {
+  list-style: none;          /* hide default triangle */
+}
+.service-details > summary::-webkit-details-marker { display: none; }
+.service-details > summary {
+  margin: 0 0 .5rem 0;
+  font-weight: 700;
+  font-size: 1rem;
+  opacity: .9;
+  cursor: default;           /* no “click to open” cursor */
+}
+.service-details .list { margin: 0; padding-left: 1.1rem; }
