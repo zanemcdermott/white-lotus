@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en" id="top">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <title>Contact • White Lotus Landscaping</title>
+  <meta name="description" content="Request a quote from White Lotus Landscaping. Send your details and photos; we’ll get back to you with timing and a tailored approach." />
+
+  <!-- Canonical + Social -->
+  <link rel="canonical" href="https://zanemcdermott.github.io/white-lotus/contact.html" />
+  <meta property="og:title" content="Contact • White Lotus Landscaping" />
+  <meta property="og:description" content="Request a quote. Share your ideas and photos — we’ll respond promptly." />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://zanemcdermott.github.io/white-lotus/contact.html" />
+  <meta property="og:image" content="https://zanemcdermott.github.io/white-lotus/images/logo.jpg" />
+  <meta name="twitter:card" content="summary_large_image" />
+
+  <!-- Favicons & App Icons -->
+  <link rel="icon" type="image/png" sizes="32x32" href="images/favicon-32.png">
+  <link rel="icon" href="images/favicon.ico">
+  <link rel="apple-touch-icon" sizes="180x180" href="images/apple-touch-icon.png">
+  <meta name="theme-color" content="#0a0a0a">
+
+  <!-- Perf -->
+  <link rel="preload" as="image" href="images/hero-zen.jpg" />
+
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <!-- Header -->
+  <header class="site-header">
+    <div class="container header-inner">
+      <a class="brand" href="index.html" aria-label="White Lotus Landscaping">
+        <img src="images/logo-transparent.png" alt="White Lotus Landscaping logo" height="40"
+             onerror="this.onerror=null;this.src='images/logo.jpg';" />
+        <span class="brand-text">White Lotus Landscaping</span>
+      </a>
+
+      <button class="nav-toggle" aria-label="Open menu" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+
+      <nav class="nav" aria-label="Primary">
+        <a href="services.html">Services</a>
+        <a href="portfolio.html">Portfolio</a>
+        <a href="testimonials.html">Reviews</a>
+        <a href="about.html">About</a>
+        <a href="contact.html" class="btn small">Contact</a>
+      </nav>
+    </div>
+  </header>
+
+  <!-- Hero -->
+  <section class="hero" style="min-height:52vh;">
+    <img class="hero-bg" src="images/hero-zen.jpg" alt="Calm garden backdrop">
+    <div class="hero-overlay"></div>
+    <div class="container hero-inner">
+      <h1>Request a Quote</h1>
+      <p class="lead">Tell us what you’re planning and (optionally) attach photos of the space.</p>
+      <div class="buttons">
+        <a class="btn" href="#quote">Start the form</a>
+        <a class="btn ghost" href="testimonials.html">Read reviews</a>
+      </div>
+    </div>
+    <svg class="wave" viewBox="0 0 1440 140" aria-hidden="true"><path d="M0,96L60,101.3C120,107,240,117,360,117.3C480,117,600,107,720,90.7C840,75,960,53,1080,48C1200,43,1320,53,1380,58.7L1440,64V140H0Z"/></svg>
+  </section>
+
+  <!-- Contact form -->
+  <section id="quote" class="section">
+    <div class="container">
+      <div class="contact-wrap">
+        <form id="contactForm"
+              class="form"
+              action="https://formspree.io/f/mgvnyvwy"
+              method="POST"
+              enctype="multipart/form-data"
+              data-thanks="thanks.html">
+          <label>
+            <span>Name *</span>
+            <input type="text" name="name" required />
+          </label>
+          <label>
+            <span>Email *</span>
+            <input type="email" name="email" required />
+          </label>
+          <label>
+            <span>Description of work *</span>
+            <textarea name="message" rows="6" placeholder="Tell us what you need and your suburb." required></textarea>
+          </label>
+          <label>
+            <span>Photos (optional)</span>
+            <input type="file" name="attachments" accept="image/*" multiple />
+          </label>
+
+          <!-- Optional helpers for Formspree -->
+          <input type="hidden" name="_subject" value="New Quote Request — White Lotus Landscaping" />
+          <input type="hidden" name="site_url" value="https://zanemcdermott.github.io/white-lotus/contact.html" />
+
+          <button type="submit" class="btn">Send request</button>
+        </form>
+
+        <aside class="contact-aside">
+          <h3>Prefer to chat?</h3>
+          <p>Send us a DM on Facebook or Instagram — we’ll reply promptly.</p>
+          <ul class="socials">
+            <li><a href="https://www.facebook.com/share/172BXBtpYT/?mibextid=wwXIfr" target="_blank" rel="noopener">Facebook</a></li>
+            <li><a href="https://instagram.com/whitelotuslandscaping" target="_blank" rel="noopener">Instagram @whitelotuslandscaping</a></li>
+          </ul>
+          <p class="form-note">By sending this form you agree we can contact you about your project.</p>
+        </aside>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="cta">
+    <div class="container cta-inner">
+      <h2>Thanks — we’ll be in touch</h2>
+      <p>We aim to respond quickly with timing and next steps.</p>
+      <a class="btn" href="portfolio.html">Browse our work</a>
+    </div>
+    <svg class="wave flip" viewBox="0 0 1440 140" aria-hidden="true"><path d="M0,96L60,101.3C120,107,240,117,360,117.3C480,117,600,107,720,90.7C840,75,960,53,1080,48C1200,43,1320,53,1380,58.7L1440,64V140H0Z"/></svg>
+  </section>
+
+  <!-- Footer -->
+  <footer class="site-footer">
+    <div class="container footer-inner">
+      <p>© <span data-year id="year"></span> White Lotus Landscaping · Gold Coast & Surrounds</p>
+      <a class="to-top" href="#top" aria-label="Back to top">↑</a>
+      <p class="credit">Website designed by
+        <a href="https://zanemcdermott.github.io/hello-static/" target="_blank" rel="noopener">Sidekick Sites</a>
+      </p>
+    </div>
+  </footer>
+
+  <script src="script.js" defer></script>
+</body>
+</html>
