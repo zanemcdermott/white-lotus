@@ -549,3 +549,30 @@ a:hover{ color: var(--accent-3); }
   border: 1px solid rgba(255,255,255,.2);
   padding: 4px 8px; border-radius: 999px;
 }
+
+/* default position for BA slider (percent-based; matches JS) */
+.ba{ --pos: 50%; --posR: calc(100% - var(--pos)); }
+
+.ba .knob {
+  position: absolute;
+  top: 50%;
+  left: var(--pos);
+  transform: translate(-50%, -50%);
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  border: 2px solid rgba(255,255,255,.85);
+  background: rgba(0,0,0,.55);
+  box-shadow: 0 6px 18px rgba(0,0,0,.35);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 4; /* sit above divider line */
+}
+
+.ba .knob::before {
+  content: "↔"; /* the arrow symbol */
+  font-size: 20px;
+  color: #fff;
+  line-height: 1;
+}
