@@ -2,7 +2,7 @@
 <html lang="en" id="top">
 <head>
     <title>Get a Quote — White Lotus Landscaping</title>
-<meta name="description" content="Send a brief and photos for a fast landscaping quote on the Gold Coast." />
+<meta name="description" content="Request a quote. Share your details and photos — we’ll get back to you promptly." />
 
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -78,27 +78,42 @@
     <div class="container">
       <div class="contact-wrap">
         <form id="contactForm"
+      class="form"
       action="https://formspree.io/f/mgvnyvwy"
       method="POST"
-      data-thanks="thanks.html"
-      enctype="multipart/form-data">
+      enctype="multipart/form-data"
+      data-thanks="thanks.html">
 
-  <!-- Name / Email / Message fields ... -->
-
-  <!-- Optional file upload (allows photos) -->
   <label>
-    <span>Attach photos (optional)</span>
-    <input type="file" name="attachments" accept="image/*" multiple>
+    <span>Name *</span>
+    <input type="text" name="name" required />
   </label>
 
-  <!-- Hidden metadata for context -->
+  <label>
+    <span>Email *</span>
+    <input type="email" name="email" required />
+  </label>
+
+  <label>
+    <span>Description of work *</span>
+    <textarea name="message" rows="6" placeholder="Tell us what you need and your suburb." required></textarea>
+  </label>
+
+  <!-- optional photos -->
+  <label>
+    <span>Photos (optional)</span>
+    <input type="file" name="attachments" accept="image/*" multiple />
+  </label>
+
+  <!-- optional extras -->
+  <input type="hidden" name="_subject" value="New Quote Request — White Lotus Landscaping" />
   <input type="hidden" name="site_url" value="">
   <input type="hidden" name="submitted_at" value="">
-  <input type="text" name="company" class="hidden" tabindex="-1" autocomplete="off" aria-hidden="true">
-  <!-- ^ honeypot: if bots fill this, Formspree shows it and you can filter -->
+  <input type="text" name="company" class="hidden" tabindex="-1" autocomplete="off" aria-hidden="true" />
 
-  <button class="btn" type="submit">Send</button>
+  <button type="submit" class="btn primary">Send request</button>
 </form>
+
 
 
         <aside class="contact-aside">
@@ -158,5 +173,15 @@
 
 
   <script src="script.js" defer></script>
+<script>
+  (function(){
+    const f = document.getElementById('contactForm');
+    if (!f) return;
+    const url = f.querySelector('input[name="site_url"]');
+    const ts  = f.querySelector('input[name="submitted_at"]');
+    if (url) url.value = location.href;
+    if (ts)  ts.value  = new Date().toISOString();
+  })();
+</script>
 </body>
 </html>
