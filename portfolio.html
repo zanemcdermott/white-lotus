@@ -108,6 +108,27 @@
     @media (min-width: 1200px){
       .build-grid img{ height: 180px; }
     }
+  
+/* Lightbox (minimal) */
+.lb{ position:fixed; inset:0; display:none; place-items:center; z-index:1000;
+     background:rgba(0,0,0,.92); padding:20px; }
+.lb.open{ display:grid; }
+.lb-fig{ position:relative; max-width:min(1200px,92vw); max-height:90vh; margin:0; }
+.lb-img{ max-width:100%; max-height:80vh; object-fit:contain; display:block;
+         border-radius:12px; border:1px solid rgba(255,255,255,.15); }
+.lb-cap{ text-align:center; color:#C9C5D3; margin-top:10px; }
+.lb-btn{ position:absolute; top:50%; transform:translateY(-50%); width:44px; height:44px;
+         border-radius:999px; border:1px solid rgba(255,255,255,.25);
+         background:rgba(0,0,0,.35); color:#fff; display:grid; place-items:center; cursor:pointer; }
+.lb-prev{ left:-56px; } .lb-next{ right:-56px; }
+@media (max-width:900px){ .lb-prev{ left:6px; } .lb-next{ right:6px; } }
+.lb-close{ position:absolute; top:10px; right:10px; padding:6px 10px; border-radius:999px;
+           border:1px solid rgba(255,255,255,.25); background:rgba(0,0,0,.35); color:#fff; cursor:pointer; }
+.lb-count{ position:absolute; bottom:8px; right:12px; font-size:.9rem; color:rgba(255,255,255,.85);
+           background:rgba(0,0,0,.35); border:1px solid rgba(255,255,255,.2); padding:4px 8px; border-radius:999px; }
+
+/* Make thumbs feel tappable */
+.build-grid img{ cursor:zoom-in; border-radius:12px; border:1px solid rgba(255,255,255,.12); }
   </style>
 </head>
 <body>
@@ -159,29 +180,30 @@
 
           <!-- ===== PAVING ===== -->
           <article class="card" data-cat="paving">
-            <div class="ba" aria-label="Before and After slider — Pavers Job 1">
-              <img class="before" src="images/paving1-before.jpg" alt="Before — old front path pavers" />
-              <img class="after"  src="images/paving1-after.jpg"  alt="After — new tiled front path" />
-              <div class="twist" aria-hidden="true"></div>
-              <div class="knob" aria-hidden="true">↔</div>
-              <div class="ba-chips">
-                <button type="button" class="ba-chip" data-value="0">Before</button>
-                <button type="button" class="ba-chip" data-value="100">After</button>
-              </div>
-              <input class="ba-range" type="range" min="0" max="100" value="50" aria-label="Reveal after photo" />
-            </div>
-            <div class="card-body">
-              <span class="eyebrow">PAVING &amp; RETAINING</span>
-              <h3 class="title">Pavers Job 1 — Front Path Renewal</h3>
-              <details class="summary">
-                <summary>View build photos</summary>
-                <div class="build-grid">
-                  <img src="images/paving1-before.jpg" alt="Before">
-                  <img src="images/paving1-after.jpg" alt="After">
-                </div>
-              </details>
-            </div>
-          </article>
+  <div class="ba" aria-label="Before and After slider — Pavers Job 1">
+    <img class="before" src="images/paving1-before.jpg" alt="Before — old front path pavers" />
+    <img class="after"  src="images/paving1-after.jpg"  alt="After — new tiled front path" />
+    <div class="twist" aria-hidden="true"></div>
+    <div class="knob" aria-hidden="true">↔</div>
+    <div class="ba-chips">
+      <button type="button" class="ba-chip" data-value="0">Before</button>
+      <button type="button" class="ba-chip" data-value="100">After</button>
+    </div>
+    <input class="ba-range" type="range" min="0" max="100" value="50" aria-label="Reveal after photo" />
+  </div>
+  <div class="card-body">
+    <span class="eyebrow">PAVING &amp; RETAINING</span>
+    <h3 class="title">Pavers Job 1 — Front Path Renewal</h3>
+    <details class="summary">
+      <summary>See the process</summary>
+      <div class="build-grid">
+        <img src="images/paving1-before.jpg" alt="Before">
+        <img src="images/paving1-after.jpg" alt="After">
+      </div>
+    </details>
+  </div>
+</article>
+
 
           <article class="card" data-cat="paving">
             <div class="ba" aria-label="Before and After slider — Pavers Job 2">
@@ -198,7 +220,7 @@
               <span class="eyebrow">PAVING &amp; RETAINING</span>
               <h3 class="title">Pavers Job 2 — Drive Edge & Patio</h3>
               <details class="summary">
-                <summary>View build photos</summary>
+                <summary>See the process</summary>
                 <div class="build-grid">
                   <img src="images/paving2-before.jpg" alt="Before">
                   <img src="images/paving2-after.jpg" alt="After">
@@ -223,7 +245,7 @@
               <span class="eyebrow">PONDS &amp; WATERFALLS</span>
               <h3 class="title">Pondless Infinite Waterfall</h3>
               <details class="summary">
-                <summary>View build photos</summary>
+                <summary>See the process</summary>
                 <div class="build-grid">
                   <img src="images/pondless-before.jpg" alt="Before">
                   <img src="images/pondless-wip.jpg" alt="During">
@@ -248,7 +270,7 @@
               <span class="eyebrow">PONDS &amp; WATERFALLS</span>
               <h3 class="title">Concrete Pond — Dig to Decorated</h3>
               <details class="summary">
-                <summary>View build photos</summary>
+                <summary>See the process</summary>
                 <div class="build-grid">
                   <img src="images/concretepond-before.jpg" alt="Before">
                   <img src="images/concretepond-wip1.jpg" alt="During">
@@ -275,7 +297,7 @@
               <span class="eyebrow">GARDEN MAKEOVERS</span>
               <h3 class="title">Zen Garden — Calm, Minimal, Tidy</h3>
               <details class="summary">
-                <summary>View build photos</summary>
+                <summary>See the process</summary>
                 <div class="build-grid">
                   <img src="images/zen-before.jpg" alt="Before">
                   <img src="images/zen-after.jpg" alt="After">
@@ -300,7 +322,7 @@
               <span class="eyebrow">HEDGES &amp; SCREENING</span>
               <h3 class="title">Front Yard — Natural Privacy</h3>
               <details class="summary">
-                <summary>View build photos</summary>
+                <summary>See the process</summary>
                 <div class="build-grid">
                   <img src="images/hedge-after1.jpg" alt="After">
                   <img src="images/hedge-after2.jpg" alt="After">
@@ -326,7 +348,7 @@
               <span class="eyebrow">STEPS &amp; ACCESS</span>
               <h3 class="title">Steps Next to Driveway</h3>
               <details class="summary">
-                <summary>View build photos</summary>
+                <summary>See the process</summary>
                 <div class="build-grid">
                   <img src="images/steps-before.jpg" alt="Before">
                   <img src="images/steps-during.jpg" alt="During">
@@ -351,7 +373,7 @@
               <span class="eyebrow">STEPS &amp; ACCESS</span>
               <h3 class="title">Side of House Steps + Sleepers</h3>
               <details class="summary">
-                <summary>View build photos</summary>
+                <summary>See the process</summary>
                 <div class="build-grid">
                   <img src="images/sidestep-during1.jpg" alt="During">
                   <img src="images/sidestep-during2.jpg" alt="During">
@@ -364,30 +386,27 @@
 
           <!-- ===== MAINTENANCE ===== -->
           <article class="card" data-cat="maintenance">
-            <div class="ba" aria-label="Before and After slider — Panel Clean (representative)">
-              <img class="before" src="images/solar1.jpg" alt="Solar panels before cleaning" />
-              <img class="after"  src="images/solar2.jpg" alt="Solar panels after cleaning" />
-              <div class="twist"></div><div class="knob">↔</div>
-              <div class="ba-chips">
-                <button type="button" class="ba-chip" data-value="0">Before</button>
-                <button type="button" class="ba-chip" data-value="100">After</button>
-              </div>
-              <input class="ba-range" type="range" min="0" max="100" value="50" />
-            </div>
-            <div class="card-body">
-              <span class="eyebrow">MAINTENANCE</span>
-              <h3 class="title">Solar Panel Cleaning</h3>
-              <details class="summary">
-                <summary>More photos</summary>
-                <div class="build-grid">
-                  <img src="images/solar1.jpg" alt="">
-                  <img src="images/solar2.jpg" alt="">
-                  <img src="images/solar3.jpg" alt="">
-                  <img src="images/solar4.jpg" alt="">
-                </div>
-              </details>
-            </div>
-          </article>
+  <!-- lead image -->
+  <div class="hero-img" style="position:relative; aspect-ratio:16/9; background:#0b0910; overflow:hidden;">
+    <img src="images/solar2.jpg" alt="" style="position:absolute; inset:0; width:100%; height:100%; object-fit:cover;">
+  </div>
+
+  <div class="card-body">
+    <span class="eyebrow">MAINTENANCE</span>
+    <h3 class="title">Solar Panel Cleaning</h3>
+    <details class="summary">
+      <summary>See more</summary>
+      <div class="build-grid" data-captions="off" style="display:grid; grid-template-columns: repeat(3, 1fr);">
+        <img src="images/solar1.jpg" alt="">
+        <img src="images/solar2.jpg" alt="">
+        <img src="images/solar3.jpg" alt="">
+        <img src="images/solar4.jpg" alt="">
+      </div>
+    </details>
+  </div>
+</article>
+
+
 
         </div>
       </div>
@@ -492,5 +511,117 @@
       window.addEventListener('scroll', onScroll, {passive:true}); onScroll();
     }
   </script>
+<script>
+/* ===== Lightbox: grouped per project card — ORDER: Before → During(s) → After; per-card captions toggle ===== */
+(() => {
+  // Build overlay once
+  const lb = document.createElement('div');
+  lb.className = 'lb';
+  lb.setAttribute('role','dialog');
+  lb.setAttribute('aria-modal','true');
+  lb.innerHTML = `
+    <figure class="lb-fig">
+      <img class="lb-img" alt="">
+      <figcaption class="lb-cap"></figcaption>
+      <button type="button" class="lb-btn lb-prev" aria-label="Previous">‹</button>
+      <button type="button" class="lb-btn lb-next" aria-label="Next">›</button>
+      <button type="button" class="lb-close" aria-label="Close">✕</button>
+      <div class="lb-count" aria-live="polite"></div>
+    </figure>`;
+  document.body.appendChild(lb);
+
+  const imgEl   = lb.querySelector('.lb-img');
+  const capEl   = lb.querySelector('.lb-cap');
+  const prevBtn = lb.querySelector('.lb-prev');
+  const nextBtn = lb.querySelector('.lb-next');
+  const closeBtn= lb.querySelector('.lb-close');
+  const countEl = lb.querySelector('.lb-count');
+
+  let state = { list: [], i: 0, prevActive: null, captionsOn: true };
+
+  const show = (idx) => {
+    if (!state.list.length) return;
+    state.i = (idx + state.list.length) % state.list.length;
+    const it = state.list[state.i];
+    imgEl.src = it.src; imgEl.alt = it.alt || '';
+    capEl.textContent = state.captionsOn ? (it.alt || '') : '';
+    countEl.textContent = `${state.i + 1} / ${state.list.length}`;
+  };
+  const open = (items, idx, captionsOn = true) => {
+    state.list = items;
+    state.captionsOn = !!captionsOn;
+    capEl.style.display = state.captionsOn ? '' : 'none';
+    if (!state.list.length) return;
+    state.prevActive = document.activeElement;
+    lb.classList.add('open');
+    document.body.style.overflow = 'hidden';
+    show(idx);
+    closeBtn.focus();
+  };
+  const close = () => {
+    lb.classList.remove('open');
+    document.body.style.overflow = '';
+    imgEl.removeAttribute('src');
+    state.prevActive?.focus();
+  };
+
+  const norm = (src) => new URL(src, location.href).href;
+
+  // Wire up each project card’s build-grid as a group
+  document.querySelectorAll('.card[data-cat]').forEach(card => {
+    const grid   = card.querySelector('.build-grid');
+    const thumbs = grid ? [...grid.querySelectorAll('img')] : [];
+    if (!thumbs.length) return;
+
+    const captionsOff = grid.dataset.captions === 'off';
+
+    const beforeEl  = card.querySelector('.ba img.before');
+    const afterEl   = card.querySelector('.ba img.after');
+    const beforeUrl = beforeEl?.src ? norm(beforeEl.src) : null;
+    const afterUrl  = afterEl?.src  ? norm(afterEl.src)  : null;
+
+    // DURING = all thumbs except those matching BA before/after
+    const during = thumbs
+      .map(t => ({ src: norm(t.src), alt: t.alt || '' }))
+      .filter(it => it.src !== beforeUrl && it.src !== afterUrl);
+
+    // Final ordered list: BEFORE → DURING(s) → AFTER
+    const items = [
+      ...(beforeUrl ? [{ src: beforeUrl, alt: beforeEl?.alt || 'Before' }] : []),
+      ...during,
+      ...(afterUrl  ? [{ src: afterUrl,  alt: afterEl?.alt  || 'After'  }] : []),
+    ];
+
+    // Click: open at clicked thumb, captions per-card
+    thumbs.forEach(t => {
+      const targetUrl = norm(t.src);
+      const startIdx = items.findIndex(it => it.src === targetUrl);
+      t.style.cursor = 'zoom-in';
+      t.addEventListener('click', () => open(items, startIdx >= 0 ? startIdx : 0, !captionsOff));
+    });
+  });
+
+  // Controls
+  const showIdx = d => show(state.i + d);
+  prevBtn.addEventListener('click', () => showIdx(-1));
+  nextBtn.addEventListener('click', () => showIdx(1));
+  closeBtn.addEventListener('click', close);
+  lb.addEventListener('click', (e) => { if (e.target === lb) close(); });
+
+  // Keyboard & swipe
+  document.addEventListener('keydown', (e) => {
+    if (!lb.classList.contains('open')) return;
+    if (e.key === 'Escape') close();
+    if (e.key === 'ArrowLeft') showIdx(-1);
+    if (e.key === 'ArrowRight') showIdx(1);
+  });
+  let sx=0, sy=0;
+  imgEl.addEventListener('pointerdown', (e)=>{ sx=e.clientX; sy=e.clientY; imgEl.setPointerCapture(e.pointerId); });
+  imgEl.addEventListener('pointerup', (e)=>{
+    const dx=e.clientX-sx, dy=e.clientY-sy;
+    if (Math.abs(dx)>30 && Math.abs(dy)<40) showIdx(dx>0 ? -1 : 1);
+  });
+})();
+</script>
 </body>
 </html>
