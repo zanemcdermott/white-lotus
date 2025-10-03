@@ -1,13 +1,10 @@
 <!doctype html>
 <html lang="en">
 <head>
-    <title>Portfolio — White Lotus Landscaping</title>
-<meta name="description" content="Before/after landscaping transformations — paving, water features, makeovers, hedges, steps, maintenance." />
-
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Project Portfolio — White Lotus Landscaping</title>
-  <meta name="description" content="Hand-picked landscaping transformations across paving, water features, gardens, steps and more.">
+  <title>Portfolio — White Lotus Landscaping</title>
+  <meta name="description" content="Before/after landscaping transformations — paving, water features, makeovers, hedges, steps, maintenance.">
 
   <!-- Open Graph -->
   <meta property="og:title" content="Project Portfolio — White Lotus Landscaping">
@@ -19,9 +16,9 @@
   <link rel="icon" href="images/favicon-32.png" sizes="32x32">
   <link rel="apple-touch-icon" href="images/favicon-512.png">
   <link rel="stylesheet" href="style.css?v=portfolio-2" />
+
   <style>
     /* --- Portfolio page specific additions (kept small) --- */
-
     .portfolio-hero{
       padding: 72px 0 28px;
       background: radial-gradient(1200px 420px at 50% -80px, rgba(255,255,255,.06), transparent 60%) , #0f0d12;
@@ -29,9 +26,7 @@
     .portfolio-hero .h1{ font-size: clamp(32px, 6vw, 54px); margin: 0 0 10px; }
     .portfolio-hero .lead{ color: var(--muted, #cfcbd6); max-width: 62ch; }
 
-    .filter-bar{
-      display:flex; gap:10px; flex-wrap:wrap; margin: 18px 0 30px;
-    }
+    .filter-bar{ display:flex; gap:10px; flex-wrap:wrap; margin: 18px 0 30px; }
     .filter-chip{
       border:1px solid rgba(255,255,255,.1);
       background:#19141f; color:#fff; padding:10px 14px; border-radius:999px;
@@ -42,10 +37,7 @@
       border-color: transparent;
     }
 
-    .grid{
-      display:grid; gap:22px;
-      grid-template-columns:repeat(12,1fr);
-    }
+    .grid{ display:grid; gap:22px; grid-template-columns:repeat(12,1fr); }
     .card{
       grid-column: span 12;
       background:#151119; border:1px solid rgba(255,255,255,.06);
@@ -60,7 +52,7 @@
     }
     .title{ font-size: clamp(20px, 3.8vw, 28px); margin: 10px 0 6px; }
 
-    /* Before/After slider */
+    /* Before/After slider (keeps your look) */
     .ba{
       position:relative; aspect-ratio: 16/9; background:#0b0910;
       --pos: 50; /* 0..100 (percent) */
@@ -68,13 +60,13 @@
     .ba img{
       position:absolute; inset:0; width:100%; height:100%; object-fit:cover;
     }
+    /* Base image is BEFORE (full). AFTER is revealed from the left to --pos% */
     .ba .after{
       clip-path: polygon(0 0, calc(var(--pos)*1%) 0, calc(var(--pos)*1%) 100%, 0 100%);
-      /* ^ shows left portion to --pos% so base = BEFORE (full), overlay = AFTER (revealed from left) */
       mix-blend-mode: normal;
     }
     .ba .twist{
-      position:absolute; top:0; bottom:0; left:calc(var(--pos)*1%); width:2px; 
+      position:absolute; top:0; bottom:0; left:calc(var(--pos)*1%); width:2px;
       background: rgba(255,255,255,.9); box-shadow: 0 0 0 1px rgba(0,0,0,.5);
       transform: translateX(-1px); z-index:3;
     }
@@ -103,52 +95,45 @@
       background:#120e17; border:1px dashed rgba(255,255,255,.12);
       padding:12px 14px; border-radius:12px;
     }
-    details.summary > summary{
-      list-style:none; cursor:pointer; font-weight:700;
-    }
+    details.summary > summary{ list-style:none; cursor:pointer; font-weight:700; }
     details.summary[open]{ border-style: solid; }
 
     .build-grid{ display:grid; gap:10px; grid-template-columns: repeat(3, 1fr); margin-top:12px; }
     .build-grid img{ width:100%; height: 160px; object-fit:cover; border-radius:10px; }
 
-    @media (min-width: 820px){
+    /* 2-across on laptops/desktops */
+    @media (min-width: 992px){
       .card{ grid-column: span 6; }
-      .build-grid img{ height: 180px; }
     }
     @media (min-width: 1200px){
-      .card{ grid-column: span 4; }
+      .build-grid img{ height: 180px; }
     }
   </style>
 </head>
 <body>
 
-  <!-- Header (uses your existing global header styles) -->
+  <!-- Header -->
   <header class="site-header">
-  <div class="container header-inner">
-    <button class="nav-toggle" aria-label="Open menu" aria-expanded="false">
-      <span></span>
-    </button>
+    <div class="container header-inner">
+      <button class="nav-toggle" aria-label="Open menu" aria-expanded="false"><span></span></button>
+      <a class="brand" href="index.html" aria-label="White Lotus Landscaping">
+        <img src="images/logo-transparent.png" alt="White Lotus Landscaping logo" height="36"
+             onerror="this.onerror=null;this.src='images/logo.jpg';" />
+        <span class="brand-text">White Lotus Landscaping</span>
+      </a>
+      <a class="btn header-cta" href="contact.html">Get a Quote</a>
+    </div>
+    <nav class="nav">
+      <a href="index.html">Home</a>
+      <a href="services.html">Services</a>
+      <a href="portfolio.html">Portfolio</a>
+      <a href="about.html">About</a>
+    </nav>
+  </header>
 
-    <a class="brand" href="index.html" aria-label="White Lotus Landscaping">
-      <img src="images/logo-transparent.png" alt="White Lotus Landscaping logo" height="36"
-           onerror="this.onerror=null;this.src='images/logo.jpg';" />
-      <span class="brand-text">White Lotus Landscaping</span>
-    </a>
-
-    <a class="btn header-cta" href="contact.html">Get a Quote</a>
-  </div>
-
-  <nav class="nav">
-    <a href="index.html">Home</a>
-    <a href="services.html">Services</a>
-    <a href="portfolio.html">Portfolio</a>
-    <a href="about.html">About</a>
-  </nav>
-</header>
-
-<a href="https://www.facebook.com/share/172BXBtpYT/?mibextid=wwXIfr" target="_blank" rel="noopener">Facebook</a>
-<a href="https://instagram.com/whitelotuslandscaping" target="_blank" rel="noopener">Instagram</a>
-
+  <!-- (These social links were in your old file just under header) -->
+  <a href="https://www.facebook.com/share/172BXBtpYT/?mibextid=wwXIfr" target="_blank" rel="noopener">Facebook</a>
+  <a href="https://instagram.com/whitelotuslandscaping" target="_blank" rel="noopener">Instagram</a>
 
   <main>
     <section class="portfolio-hero section">
@@ -172,7 +157,7 @@
       <div class="container">
         <div class="grid" id="portfolioGrid">
 
-          <!-- ================= PAVING ================= -->
+          <!-- ===== PAVING ===== -->
           <article class="card" data-cat="paving">
             <div class="ba" aria-label="Before and After slider — Pavers Job 1">
               <img class="before" src="images/paving1-before.jpg" alt="Before — old front path pavers" />
@@ -222,7 +207,7 @@
             </div>
           </article>
 
-          <!-- ================= WATER FEATURES ================= -->
+          <!-- ===== WATER ===== -->
           <article class="card" data-cat="water">
             <div class="ba" aria-label="Before and After slider — Pondless Infinite Waterfall">
               <img class="before" src="images/pondless-before.jpg" alt="Before — corner before water feature" />
@@ -274,7 +259,7 @@
             </div>
           </article>
 
-          <!-- ================= MAKEOVERS ================= -->
+          <!-- ===== MAKEOVER ===== -->
           <article class="card" data-cat="makeover">
             <div class="ba" aria-label="Before and After slider — Zen Garden Makeover">
               <img class="before" src="images/zen-before.jpg" alt="Before — garden area prior to makeover" />
@@ -299,7 +284,7 @@
             </div>
           </article>
 
-          <!-- ================= HEDGES ================= -->
+          <!-- ===== HEDGES ===== -->
           <article class="card" data-cat="hedges">
             <div class="ba" aria-label="Before and After slider — Front Yard Screening Hedges">
               <img class="before" src="images/hedge-before.jpg" alt="Before — open front yard" />
@@ -325,7 +310,7 @@
             </div>
           </article>
 
-          <!-- ================= STEPS & ACCESS ================= -->
+          <!-- ===== STEPS ===== -->
           <article class="card" data-cat="steps">
             <div class="ba" aria-label="Before and After slider — Steps by Drive">
               <img class="before" src="images/steps-before.jpg" alt="Before — slope beside driveway" />
@@ -377,7 +362,7 @@
             </div>
           </article>
 
-          <!-- ================= MAINTENANCE (SOLAR CLEAN) ================= -->
+          <!-- ===== MAINTENANCE ===== -->
           <article class="card" data-cat="maintenance">
             <div class="ba" aria-label="Before and After slider — Panel Clean (representative)">
               <img class="before" src="images/solar1.jpg" alt="Solar panels before cleaning" />
@@ -409,7 +394,7 @@
     </section>
   </main>
 
-   <footer class="site-footer">
+  <footer class="site-footer">
     <div class="container footer-inner">
       <div class="foot-brand">
         <img src="images/logo-transparent.png" alt="" height="36"
@@ -424,7 +409,7 @@
 
       <nav class="foot-nav">
         <a href="services.html">Services</a>
-         <a>|</a>
+        <a>|</a>
         <a href="portfolio.html">Portfolio</a>
         <a>|</a>
         <a href="about.html">About</a>
@@ -442,8 +427,10 @@
   </footer>
 
   <script>
-    // Year in footer
-    document.getElementById('year').textContent = new Date().getFullYear();
+    // Footer year (support both #y and #year so a mismatch never crashes)
+    (document.getElementById('y') || document.getElementById('year'))?.append(
+      new Date().getFullYear()
+    );
 
     // ===== Filter chips =====
     const chips = document.querySelectorAll('.filter-chip');
@@ -457,7 +444,6 @@
           const show = (f==='all') || card.dataset.cat === f;
           card.style.display = show ? '' : 'none';
         });
-        // Scroll to top of grid on change (mobile nicety)
         document.getElementById('portfolioGrid').scrollIntoView({behavior:'smooth', block:'start'});
       });
     });
@@ -473,29 +459,22 @@
       const setPos = (pct) => {
         const value = clamp(+pct, 0, 100);
         box.style.setProperty('--pos', value);
-        range.value = value;
-        // update chip active state
+        if (range) range.value = value;
         const target = (value <= 50) ? 0 : 100;
         chips.forEach(c => c.classList.toggle('active', +c.dataset.value === target));
       };
 
-      // init
-      setPos(range.value || 50);
-
-      // drag via range
-      range.addEventListener('input', e => setPos(e.target.value));
-
-      // chips tap
+      setPos(range?.value || 50);
+      range?.addEventListener('input', e => setPos(e.target.value));
       chips.forEach(c => c.addEventListener('click', () => setPos(c.dataset.value)));
 
-      // Optional: drag anywhere on the image
       const onPointer = (ev) => {
         const r = box.getBoundingClientRect();
         const pct = ((ev.clientX - r.left) / r.width) * 100;
         setPos(pct);
       };
       [box, knob, twist].forEach(el=>{
-        el.addEventListener('pointerdown', (e)=>{
+        el?.addEventListener('pointerdown', (e)=>{
           e.preventDefault();
           onPointer(e);
           const move = (e2)=>onPointer(e2);
@@ -506,7 +485,7 @@
       });
     });
 
-    // ===== Mobile header helper (if not already in your global JS) =====
+    // Sticky header shade (if your global JS didn’t already add it)
     const header = document.querySelector('.site-header');
     if (header){
       const onScroll = () => header.classList.toggle('scrolled', window.scrollY > 10);

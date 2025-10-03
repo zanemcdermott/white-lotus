@@ -5,6 +5,7 @@
    - Gallery lightbox
    - Contact form (Formspree-ready)
    - Footer current year
+   - Before/After slider (fixed)
    ========================================================= */
 
 const $ = (s, r = document) => r.querySelector(s);
@@ -119,16 +120,14 @@ document.addEventListener("DOMContentLoaded", () => {
             form.reset();
             setStatus("Thanks! Your message has been sent. We’ll be in touch soon.", false, true);
             const redirect = form.getAttribute("data-thanks");
-          if (redirect) window.location.href = redirect;
+            if (redirect) window.location.href = redirect;
           } else {
             const data = await res.json().catch(() => ({}));
             throw new Error(data?.errors?.[0]?.message || `Request failed (${res.status})`);
           }
         } else {
           // Not configured yet
-          throw new Error(
-            "Form endpoint not configured. Add your Formspree URL to the form’s action attribute."
-          );
+          throw new Error("Form endpoint not configured. Add your Formspree URL to the form’s action attribute.");
         }
       } catch (err) {
         setStatus(err.message || "Something went wrong. Please try again.", true);
@@ -147,39 +146,59 @@ document.addEventListener("DOMContentLoaded", () => {
   const yearEl = $("[data-year]");
   if (yearEl) yearEl.textContent = new Date().getFullYear();
 
+  /* ---------- Before/After slider (FIXED) ---------- */
+  document.querySelectorAll(".ba").forEach(box => {
+    const range = box.querySelector(".ba-range");
+    const chips = box.querySelectorAll(".ba-chip");
+    if (!range) return;
 
+    // apply CSS var
+    const apply = (v) => {
+      const num = Math.max(0, Math.min(100, Number(v)));
+      box.style.setProperty("--pos", num + "%");
+      range.value = String(num);
+      if (chips.length) {
+        const pick = num <= 50 ? 0 : 100;
+        chips.forEach(c => c.classList.toggle("active", Number(c.dataset.value) === pick));
+      }
+    };
+
+    // init from range value or 50
+    apply(range.value || 50);
+
+    // drag via range
+    range.addEventListener("input", e => apply(e.target.value));
+
+    // chips tap
+    chips.forEach(c => c.addEventListener("click", () => apply(c.dataset.value)));
+
+    // optional: drag anywhere on the image
+    const drag = (ev) => {
+      const r = box.getBoundingClientRect();
+      const pct = ((ev.clientX - r.left) / r.width) * 100;
+      apply(pct);
+    };
+    ["pointerdown"].forEach(evt => {
+      box.addEventListener(evt, (e) => {
+        if (e.target === range) return; // let native range handle
+        e.preventDefault();
+        drag(e);
+        const move = (e2) => drag(e2);
+        const up = () => {
+          window.removeEventListener("pointermove", move);
+          window.removeEventListener("pointerup", up);
+        };
+        window.addEventListener("pointermove", move, { passive: false });
+        window.addEventListener("pointerup", up, { once: true });
+      });
+    });
+  });
 });
 
-// Darken header once you start scrolling (helps over hero images)
+/* ---------- Darken header on scroll ---------- */
 const header = document.querySelector('.site-header');
 if (header){
   const onScroll = () => header.classList.toggle('scrolled', window.scrollY > 10);
   window.addEventListener('scroll', onScroll, {passive:true});
   onScroll();
 }
-
-document.querySelectorAll('.ba').forEach(box=>{
-  const range = box.querySelector('.ba-range');
-  const chips = box.querySelectorAll('.ba-chip');
-  if (!range || !chips.length) return;
-
-  const setPos = (pct)=>{
-    range.value = pct;
-    range.dispatchEvent(new Event('input', { bubbles: true }));
-  };
-
-  chips.forEach(c=>{
-    c.addEventListener('click', ()=>{
-      setPos(c.dataset.value);
-      chips.forEach(x=>x.classList.toggle('active', x===c));
-    });
-  });
-
-  const init = Number(range.value || 50);
-  chips.forEach(c=>c.classList.toggle(
-    'active',
-    Number(c.dataset.value) === (init <= 50 ? 0 : 100)
-  ));
-});
-
-
